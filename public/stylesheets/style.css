@@ -15,39 +15,65 @@ body {
 
 h1 {
   color: white;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  align-items: center;
+  font-size: 45px;
 }
 
 p {
   color: lime;
 }
+h3 {
+  margin-bottom: 200px;
+  color: rgb(192, 188, 188);
+  font-size: 15px;
+  padding: 10px;
+  text-align: center;
+  margin-left: 100px;
+  margin-right: 100px;
+}
 
 input[type="text"],
+input[type="email"],
 input[type="password"] {
-  width: 250px;
-  height: 30px;
+width: 300px;
+height: 35px;
+margin-top: 10px; /* Valor ajustado para aumentar o espaçamento superior */
+margin-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
   margin-bottom: 10px;
+  padding: 5px;
+}
+button[type="submit"] {
+  display: block;
+  margin: 0 auto;
 }
 
 button {
-  background-color: white;
-  color: black;
-  width: 200px;
-  height: 40px;
-  font-weight: bold;
+background-color: white;
+color: black;
+width: 150px;
+height: 40px;
+font-weight: bold;
+transition: background-color 0.3s ease, color 0.3s ease;
+margin-top: 5px; /* Valor ajustado para aumentar o espaçamento superior */
+margin-bottom: 5px;
+}
+
+button:hover {
+  background-color:  lime;/* Define a cor de fundo desejada no hover */
+  color: black; /* Define a cor do texto desejada no hover */
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
-}
-
-.site-icon {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
+  margin-top: 10px;
 }
 
 header {
@@ -58,10 +84,11 @@ header {
 }
 
 nav {
-  margin-left: 20px;
+  margin-left: 30px;
 }
 
 ul {
+  margin-bottom: 10px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -72,7 +99,7 @@ ul {
 
 li {
   display: inline;
-  margin-right: 10px;
+  margin-right: 20px;
   font-size: 25px;
 }
 
@@ -87,6 +114,16 @@ a {
   align-items: center;
 }
 
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease; /* Adiciona uma transição suave de cor */
+}
+
+.nav-links li a:hover {
+  color:  lime; /* Define a cor desejada no hover */
+}
+
 footer {
   position: fixed;
   bottom: 0;
@@ -96,3 +133,17 @@ footer {
   text-align: center;
   font-size: 11px;
 }
+
+.site-icon {
+  width: 150px; /* Ajuste o tamanho conforme necessário */
+  height: 150px; /* Ajuste o tamanho conforme necessário */
+  margin-bottom: 10px; /* Ajuste o valor para mover a imagem para cima */
+}
+
+.lista-frameworks {
+  display: block;
+  margin-bottom: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  }
