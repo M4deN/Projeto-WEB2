@@ -9,12 +9,18 @@ dotenv.config();
 
 // Inicialização do aplicativo Express
 const app = express();
-app.use(express.static('public'));
+
 // Configuração do middleware para processar os dados do formulário
 app.use(express.urlencoded({ extended: false }));
 
 // Configuração do diretório público para servir arquivos estáticos
+app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Rota da página login
+app.get('/login', (req, res) => {
+  res.render('login');
+});
 
 // Rota da página inicial
 app.get('/', (req, res) => {
