@@ -1,0 +1,13 @@
+Nossa plataforma utiliza as seguintes tecnologias:
+
+- Node.js: um ambiente de execução de código JavaScript no servidor.
+- Express.js: um framework web para desenvolvimento de aplicações em Node.js.
+- MongoDB: um banco de dados NoSQL orientado a documentos.
+- React: uma biblioteca JavaScript para construção de interfaces de usuário.
+- HTML: linguagem de marcação para estruturar o conteúdo das páginas web.
+- CSS: linguagem de estilo para definir a aparência visual das páginas web.
+- JavaScript: linguagem de programação para adicionar interatividade às páginas web.
+
+Essas tecnologias combinadas oferecem uma base sólida para o desenvolvimento de aplicações web modernas e escaláveis.
+
+

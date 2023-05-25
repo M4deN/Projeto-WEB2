@@ -3,6 +3,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
 const path = require('path');
+const fs = require('fs');
 
 // Configuração do dotenv para carregar as variáveis de ambiente
 dotenv.config();
@@ -24,17 +25,20 @@ app.get('/login', (req, res) => {
 
 // Rota da página inicial
 app.get('/', (req, res) => {
-  res.render('index');
+  const tecnologia = fs.readFileSync('./conteudo/index.txt', 'utf8');
+  res.render('index', { conteudo: tecnologia });
 });
 
 // Rota da página de descrição do projeto
 app.get('/descricao', (req, res) => {
-  res.render('descricao');
+  const tecnologia = fs.readFileSync('./conteudo/descricao.txt', 'utf8');
+  res.render('descricao', { conteudo: tecnologia });
 });
 
 // Rota da página de tecnologias utilizadas
-app.get('/tecnologias', (req, res) => {
-  res.render('tecnologias');
+app.get('/tecnologia', (req, res) => {
+  const tecnologia = fs.readFileSync('./conteudo/tecnologia.txt', 'utf8');
+  res.render('tecnologia', { conteudo: tecnologia });
 });
 
 // Rota da página de desenvolvedores

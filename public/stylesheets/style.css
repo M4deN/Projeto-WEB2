@@ -3,7 +3,7 @@ body {
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centraliza verticalmente o cabeçalho e o rodapé */
+  justify-content: center; 
   align-items: center;
   height: 100vh;
   margin: 0;
@@ -34,16 +34,23 @@ h3 {
 }
 
 input[type="text"],
-input[type="email"],
 input[type="password"] {
 width: 300px;
 height: 35px;
-margin-top: 10px; /* Valor ajustado para aumentar o espaçamento superior */
+margin-top: 10px; 
 margin-bottom: 10px;
 }
+input[type="email"],
+input[type="text1"]{
+  width: 500px;
+  height: 35px;
+  margin-top: 10px; 
+  margin-bottom: 10px;
+  }
+
 
 textarea {
-  width: 100%;
+  width: 98%;
   height: 150px;
   margin-bottom: 10px;
   padding: 5px;
@@ -60,13 +67,13 @@ width: 150px;
 height: 40px;
 font-weight: bold;
 transition: background-color 0.3s ease, color 0.3s ease;
-margin-top: 5px; /* Valor ajustado para aumentar o espaçamento superior */
+margin-top: 5px; 
 margin-bottom: 5px;
 }
 
 button:hover {
-  background-color:  lime;/* Define a cor de fundo desejada no hover */
-  color: black; /* Define a cor do texto desejada no hover */
+  background-color:  lime;
+  color: black; 
 }
 
 .form-group {
@@ -78,7 +85,7 @@ button:hover {
 
 header {
   display: flex;
-  align-items: center; /* Centraliza verticalmente os itens do cabeçalho */
+  align-items: center; 
   justify-content: flex-start;
   padding: 10px;
 }
@@ -94,7 +101,7 @@ ul {
   padding: 0;
   display: flex;
   align-items: center;
-  justify-content: center; /* Centraliza horizontalmente os itens da lista */
+  justify-content: center; 
 }
 
 li {
@@ -117,11 +124,11 @@ a {
 .nav-links li a {
   color: white;
   text-decoration: none;
-  transition: color 0.3s ease; /* Adiciona uma transição suave de cor */
+  transition: color 0.3s ease; 
 }
 
 .nav-links li a:hover {
-  color:  lime; /* Define a cor desejada no hover */
+  color:  lime; 
 }
 
 footer {
@@ -135,9 +142,9 @@ footer {
 }
 
 .site-icon {
-  width: 150px; /* Ajuste o tamanho conforme necessário */
-  height: 150px; /* Ajuste o tamanho conforme necessário */
-  margin-bottom: 10px; /* Ajuste o valor para mover a imagem para cima */
+  width: 150px; 
+  height: 150px; 
+  margin-bottom: 10px; 
 }
 
 .lista-frameworks {
@@ -146,4 +153,12 @@ footer {
   list-style: none;
   margin: 0;
   padding: 0;
-  }
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: center;
+}
+
+.lista-frameworks li {
+  text-align: left;
+  margin-bottom: 5px;
+}
