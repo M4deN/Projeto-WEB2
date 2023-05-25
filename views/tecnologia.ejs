@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-  <h1 style="text-align: center;"><img src="images/logo.png" alt="Ícone do Site" class="site-icon"></h1>
+  <link rel="stylesheet" href="stylesheets/style.css">
   <title>Tecnologias</title>
 </head>
 <body>
-  <h1>Frameworks Utilizados</h1>
-  <ul class="lista-frameworks">
-    <%= conteudo %>
-  </ul>
+    <h1>FRAMEWOORKS UTILIZADOS</h1>
+  <header>
+    <nav>
+      <h1 style="text-align: center;"><img src="images/logo.png" alt="Ícone do Site" class="site-icon"></h1>
+      <ul class="nav-links">
+        <li><a href="/">Página Inicial</a></li>
+        <li><a href="/descricao">Descrição</a></li>
+        <li><a href="/tecnologia">Tecnologias</a></li>
+        <li><a href="/desenvolvedor">Desenvolvedores</a></li>
+        <li><a href="/contato">Contato</a></li>
+        <li><a href="/login">Login</a></li>
+      </ul>
+      <div class="container">
+      <h3><%= conteudo %> </h3>
+    </div>
+    </nav>
+  </header>
   <footer>
     <p>© 2023 Projeto Web Ciclo 1. Todos os direitos reservados.</p>
   </footer>

@@ -1,8 +1,9 @@
-Nossa plataforma utiliza as seguintes tecnologias:
+Nossa plataforma utilizara as seguintes tecnologias:
 
 - Node.js: um ambiente de execução de código JavaScript no servidor.
-- Express.js: um framework web para desenvolvimento de aplicações em Node.js.
+- Express: um framework web para desenvolvimento de aplicações em Node.js.
 - MongoDB: um banco de dados NoSQL orientado a documentos.
+- Sequelize: Ele simplifica o processo de lidar com o banco de dados, fornecendo uma abstração poderosa e uma sintaxe fácil de usar.
 - React: uma biblioteca JavaScript para construção de interfaces de usuário.
 - HTML: linguagem de marcação para estruturar o conteúdo das páginas web.
 - CSS: linguagem de estilo para definir a aparência visual das páginas web.

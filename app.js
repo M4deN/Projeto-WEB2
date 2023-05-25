@@ -42,8 +42,8 @@ app.get('/tecnologia', (req, res) => {
 });
 
 // Rota da página de desenvolvedores
-app.get('/desenvolvedores', (req, res) => {
-  res.render('desenvolvedores');
+app.get('/desenvolvedor', (req, res) => {
+  res.render('desenvolvedor');
 });
 
 // Rota da página de contato
