@@ -26,11 +26,10 @@ app.get('/login', (req, res) => {
 // Rota de autenticação do login
 app.post('/login', (req, res) => {
   const { username1, password2 } = req.body;
-  // Verificar se as credenciais de login estão corretas
   if (username1 === 'teste@email.com' && password2 === '1234') {
     res.redirect('/');
   } else {
-    // Exibir uma mensagem de erro usando o SweetAlert
+    // Exibir uma mensagem de erro
     const script = `
       <script>
         alert('Credenciais inválidas. Por favor, tente novamente.');
@@ -72,11 +71,9 @@ app.get('/contato', (req, res) => {
 // Rota para o envio do formulário de contato
 app.post('/contato/enviar', enviarEmail);
 
-
 // Configuração do template engine EJS
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // Exportação do servidor
 module.exports = app;
-

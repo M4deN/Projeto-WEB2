@@ -24,12 +24,20 @@ h1 {
   font-size: 40px;
   text-align: center;
 }
+h3 {
+  color: rgb(192, 188, 188);
+  font-size: 16px;
+  padding: 10px;
+  text-align: center;
+  margin-left: 50px;
+  margin-right: 50px;
+}
 h4{
   color: white;
-  margin-top: 10px;
-  margin-bottom: 10;
-  font-size: 50px;
+  margin-top: 20px;
+  font-size: 41px;
   text-align: center;
+  margin-bottom: 15px;
 }
 
 @media only screen and (max-width: 480px) {
@@ -45,21 +53,7 @@ h4{
     margin-top: 50px;
   }
 }
-
-p {
-  color: lime;
-}
-
-h3 {
-  color: rgb(192, 188, 188);
-  font-size: 16px;
-  padding: 10px;
-  text-align: center;
-  margin-left: 100px;
-  margin-right: 100px;
-  margin-bottom: 20px;
-}
-
+/*--------------------------Efeito-Botões-------------------------------*/
 button[type="submit"],
 button {
   display: block;
@@ -91,12 +85,11 @@ header {
   padding: 10px;
   margin-bottom: 10px;
 }
-
+/*---------------------------Formatação-Menu-------------------------------*/
 nav {
   margin-left: 30px;
   margin-bottom: -30px;
 }
-
 ul {
   margin-bottom: 10px;
   list-style: none;
@@ -106,16 +99,14 @@ ul {
   align-items: center;
   justify-content: center;
 }
-
+a {
+  color: white;
+  text-decoration: none;
+}
 li {
   display: inline;
   margin-right: 20px;
   font-size: 25px;
-}
-
-a {
-  color: white;
-  text-decoration: none;
 }
 .nav-links {
   display: flex;
@@ -126,7 +117,6 @@ a {
   text-decoration: none;
   transition: color 0.3s ease;
 }
-
 .nav-links li a:hover {
   color: lime;
 }
@@ -135,7 +125,7 @@ a {
   height: 150px;
   margin-bottom: 10px;
 }
-
+/*---------------------------Pagina-Tecnologia--------------------------*/
 .lista-frameworks {
   display: block;
   margin-bottom: 10px;
@@ -165,24 +155,23 @@ a {
   flex-direction: column;
   align-items: center;
   border: 1px solid #ccc;
-  padding: 20px;
+  padding: 25px;
   border-radius: 5px;
   margin-top: 10px;
   width: 400px;
   max-width: 100%;
-  margin-bottom: 20px;
 }
 .login-form input {
   display: block;
   margin-bottom: 10px;
   width: 100%;
-  width: 250px;
+  width: 350px;
   height: 35px;
 }
 .login-form button {
   margin-top: 10px;
   align-items: center;
-  width: 50%;
+  width: 40%;
 }
 /*---------------------------Contato----------------------------------*/
 .form-group input {
@@ -216,7 +205,7 @@ button[type="submit"] {
   flex-direction: column;
   align-items: center;
   border: 1px solid #ccc;
-  padding: 80px;
+  padding: 70px;
   border-radius: 5px;
   margin-top: 10px;
   width: 400px;
@@ -241,7 +230,7 @@ button[type="submit"] {
   display: block;
   margin: 0 auto;
 }
-
+/*---------------------------Rodapé----------------------------------*/
 footer {
   margin-bottom: auto;
   position: fixed;
@@ -249,4 +238,7 @@ footer {
   bottom: 0;
   width: 100%;
   text-align: center;
+}
+p {
+  color: lime;
 }
