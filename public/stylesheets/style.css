@@ -8,8 +8,8 @@ body {
   height: auto;
   width: auto;
   margin: 100px;
+  margin-top:50px;
 }
-
 h2 {
   color: white;
   margin-bottom: 10px;
@@ -39,7 +39,6 @@ h4{
   text-align: center;
   margin-bottom: 15px;
 }
-
 @media only screen and (max-width: 480px) {
   h1 {
     margin-top: 300px;
@@ -47,10 +46,9 @@ h4{
     margin-top: 100px;
   }
 }
-
 @media only screen and (max-width: 768px) {
   h1 {
-    margin-top: 50px;
+    margin-top: 500px;
   }
 }
 /*--------------------------Efeito-Botões-------------------------------*/
@@ -165,7 +163,7 @@ li {
   display: block;
   margin-bottom: 10px;
   width: 100%;
-  width: 350px;
+  width: 300px;
   height: 35px;
 }
 .login-form button {
@@ -174,26 +172,37 @@ li {
   width: 40%;
 }
 /*---------------------------Contato----------------------------------*/
-.form-group input {
-  position: relative;
-  display: block;
-  margin-bottom: 5px;
-  width: 100%;
+.form-group{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 35px;
+  border-radius: 5px;
+  margin-top: 10px;
   width: 600px;
+  max-width: 100%;  
+}
+.form-group input {
+  position:inherit;
+  display: block;
+  margin-bottom: 13px;
+  width: 100%; 
   height: 35px;
 }
 .form-group button {
   margin-top: 10px;
   align-items: center;
-  width: 60%;
+  width: 27%;
   margin-bottom: 10px;
+  height: 40px;
 }
 textarea {
-  margin-top: 10px;
-  width: 98%;
-  height: 180px;
+  margin-top: 5px;
+  width: 99.4%;
+  height: 150px;
   margin-bottom: 20px;
   padding: 5px;
+  resize: none;
 }
 button[type="submit"] {
   display: block;
