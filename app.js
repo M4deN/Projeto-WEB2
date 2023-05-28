@@ -1,9 +1,9 @@
-// Importação das bibliotecas necessárias
 const express = require('express');
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
 const path = require('path');
 const fs = require('fs');
+const { enviarEmail } = require('../Projeto_WEB/public/javascripts/email');
 
 // Configuração do dotenv para carregar as variáveis de ambiente
 dotenv.config();
@@ -21,6 +21,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Rota da página login
 app.get('/login', (req, res) => {
   res.render('login');
+});
+
+// Rota de autenticação do login
+app.post('/login', (req, res) => {
+  const { username1, password2 } = req.body;
+  // Verificar se as credenciais de login estão corretas
+  if (username1 === 'teste@email.com' && password2 === '1234') {
+    res.redirect('/');
+  } else {
+    // Exibir uma mensagem de erro usando o SweetAlert
+    const script = `
+      <script>
+        alert('Credenciais inválidas. Por favor, tente novamente.');
+        window.location.href = '/login';
+      </script>
+    `;
+    res.send(script);
+  }
 });
 
 // Rota da página inicial
@@ -52,35 +70,8 @@ app.get('/contato', (req, res) => {
 });
 
 // Rota para o envio do formulário de contato
-app.post('/contato/enviar', (req, res) => {
-  const { nome, email, assunto, mensagem } = req.body;
+app.post('/contato/enviar', enviarEmail);
 
-  // Configuração do nodemailer para enviar o e-mail
-  const transporter = nodemailer.createTransport({
-    service: 'nome_do_servico_de_email',
-    auth: {
-      user: process.env.EMAIL_USUARIO,
-      pass: process.env.EMAIL_SENHA,
-    },
-  });
-
-  const mailOptions = {
-    from: process.env.EMAIL_USUARIO,
-    to: process.env.EMAIL_DESTINO,
-    subject: assunto,
-    text: `Nome: ${nome}\nE-mail: ${email}\n\n${mensagem}`,
-  };
-
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error);
-      res.send('Ocorreu um erro ao enviar a mensagem.');
-    } else {
-      console.log('E-mail enviado: ' + info.response);
-      res.send('Mensagem enviada com sucesso!');
-    }
-  });
-});
 
 // Configuração do template engine EJS
 app.set('views', path.join(__dirname, 'views'));
