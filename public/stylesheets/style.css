@@ -115,6 +115,24 @@ li {
   text-decoration: none;
   transition: color 0.3s ease;
 }
+/* Estilos para telas médias */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+  }
+  
+  .nav-links li {
+    margin-bottom: 10px;
+  }
+}
+
+/* Estilos para telas pequenas */
+@media (max-width: 480px) {
+  .nav-links li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
 .nav-links li a:hover {
   color: lime;
 }
