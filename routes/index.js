@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const fs = require('fs');
+const { enviarEmail } = require('../public/javascripts/email');
 
 module.exports = (app) => {
   // Rota da página login
@@ -52,5 +53,8 @@ module.exports = (app) => {
   app.get('/contato', (req, res) => {
     res.render('contato');
   });
+
+  // Rota para o envio do formulário de contato
+app.post('/contato/enviar', enviarEmail);
 };
 

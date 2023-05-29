@@ -1,7 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
-const { enviarEmail } = require('../Projeto_WEB/public/javascripts/email');
 const routes = require('../Projeto_WEB/routes/index');
 dotenv.config();
 
@@ -17,9 +16,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Configuração das rotas
 routes(app);
-
-// Rota para o envio do formulário de contato
-app.post('/contato/enviar', enviarEmail);
 
 // Configuração do template engine EJS
 app.set('views', path.join(__dirname, 'views'));
