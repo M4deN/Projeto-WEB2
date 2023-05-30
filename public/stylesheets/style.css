@@ -1,4 +1,4 @@
-body {
+body{
   background-color: black;
   color: white;
   display: flex;
@@ -10,21 +10,21 @@ body {
   margin: 100px;
   margin-top:50px;
 }
-h2 {
+h2{
   color: white;
   margin-bottom: 10px;
   font-size: 40px;
   text-align: center;
   margin-top: -10px;
 }
-h1 {
+h1{
   color: white;
   margin-top: 15px;
   margin-bottom: 0;
   font-size: 40px;
   text-align: center;
 }
-h3 {
+h3{
   color: rgb(192, 188, 188);
   font-size: 16px;
   padding: 10px;
@@ -34,26 +34,26 @@ h3 {
 }
 h4{
   color: white;
-  margin-top: 60px;
+  margin-top: 40px;
   font-size: 41px;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 7px;
 }
 @media only screen and (max-width: 480px) {
-  h1 {
+  h1{
     margin-top: 300px;
     font-size: 30px;
     margin-top: 100px;
   }
 }
 @media only screen and (max-width: 768px) {
-  h1 {
+  h1{
     margin-top: 500px;
   }
 }
 /*--------------------------Efeito-Botões-------------------------------*/
 button[type="submit"],
-button {
+button{
   display: block;
   margin: 0 auto;
   width: 150px;
@@ -64,19 +64,17 @@ button {
   margin-bottom: 5px;
 }
 
-button:hover {
+button:hover{
   background-color: lime;
   color: black;
 }
-
-.form-group {
+.form-group{
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
 }
-
-header {
+header{
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -84,11 +82,11 @@ header {
   margin-bottom: 10px;
 }
 /*---------------------------Formatação-Menu-------------------------------*/
-nav {
+nav{
   margin-left: 30px;
   margin-bottom: -30px;
 }
-ul {
+ul{
   margin-bottom: 10px;
   list-style: none;
   margin: 0;
@@ -97,52 +95,93 @@ ul {
   align-items: center;
   justify-content: center;
 }
-a {
+a{
   color: white;
   text-decoration: none;
 }
-li {
+li{
   display: inline;
   margin-right: 20px;
   font-size: 25px;
 }
-.nav-links {
+.nav-links{
   display: flex;
   align-items: center;
 }
-.nav-links li a {
+.nav-links li a{
   color: white;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 /* Estilos para telas médias */
-@media (max-width: 768px) {
-  .nav-links {
+@media (max-width: 768px){
+  .nav-links{
     flex-direction: column;
-  }
-  
-  .nav-links li {
+  }  
+  .nav-links li{
     margin-bottom: 10px;
   }
 }
+.nav-links li a i {
+  margin-right: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.nav-links li:hover a i {
+  transform: scale(1.2);
+}
+.nav-links li:hover a,
+.nav-links li:hover i {
+  color: lime;
+  transition: color 0.3s ease;
+}
+.logout-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
+.logout-button i {
+  margin-right: 5px;
+}
+
+.logout-button:hover {
+  color: lime;
+}
+i.fas.fa-lock {
+  margin-top: 40px;
+  font-size: 30px; 
+  color: #ffffff; 
+  align-items: center;
+  margin-bottom: -30px;
+}
+.fas.fa-envelope {
+  margin-top: 30px;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: -30px;
+}
 /* Estilos para telas pequenas */
-@media (max-width: 480px) {
+@media (max-width: 480px){
   .nav-links li {
     display: inline-block;
     margin-right: 10px;
   }
 }
-.nav-links li a:hover {
+.nav-links li a:hover{
   color: lime;
 }
-.site-icon {
-  width: 150px;
-  height: 150px;
+.site-icon{
+  width: 160px;
+  height: 160px;
   margin-bottom: 10px;
 }
 /*---------------------------Pagina-Tecnologia--------------------------*/
-.lista-frameworks {
+.lista-frameworks{
   display: block;
   margin-bottom: 10px;
   list-style: none;
@@ -152,11 +191,12 @@ li {
   margin-right: 100px;
   text-align: center;
 }
-.lista-frameworks li {
+.lista-frameworks li{
   text-align: left;
   margin-bottom: 5px;
 }
-.container {
+.container{
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -164,27 +204,37 @@ li {
   margin-top: 20px;
   padding-bottom: 60px; 
 }
+.centered-content {
+  color: rgb(192, 188, 188);
+  font-size: 16px;
+  padding: 10px;
+  text-align: center;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
 /*---------------------------Login-index----------------------------------*/
-.login-form {
+.login-form{
   position: static;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid #ccc;
-  padding: 25px;
+  padding: 40px;
   border-radius: 5px;
-  margin-top: 10px;
+  margin-top: 45px;
   width: 400px;
   max-width: 100%;
 }
-.login-form input {
+.login-form input{
   display: block;
   margin-bottom: 10px;
   width: 100%;
   width: 300px;
   height: 35px;
 }
-.login-form button {
+.login-form button{
   margin-top: 10px;
   align-items: center;
   width: 40%;
@@ -200,21 +250,21 @@ li {
   width: 600px;
   max-width: 100%;  
 }
-.form-group input {
+.form-group input{
   position:inherit;
   display: block;
   margin-bottom: 13px;
   width: 100%; 
   height: 35px;
 }
-.form-group button {
+.form-group button{
   margin-top: 10px;
   align-items: center;
   width: 27%;
   margin-bottom: 10px;
   height: 40px;
 }
-textarea {
+textarea{
   margin-top: 5px;
   width: 99.4%;
   height: 150px;
@@ -222,43 +272,42 @@ textarea {
   padding: 5px;
   resize: none;
 }
-button[type="submit"] {
+button[type="submit"]{
   display: block;
   margin: 0 auto;
 }
 /*---------------------------Login-Separado----------------------------------*/
-.form-group-login {
+.form-group-login{
   display: block;
   flex-direction: column;
   align-items: center;
   border: 1px solid #ccc;
   padding: 70px;
   border-radius: 5px;
-  margin-top: 50px;
+  margin-top: 10px;
   width: 400px;
   max-width: 100%;
   margin-bottom: -10px;
 }
-.form-group-login input {
+.form-group-login input{
   margin-bottom: 20px;
   display: block;  
   width: 100%;
   width: 400px;
   height: 35px;
 }
-.form-group-login button {
+.form-group-login button{
   margin-top: 100px;
   align-items: center;
   width: 40%;
   margin-bottom: 10px;
 }
-
-button[type="submit"] {
+button[type="submit"]{
   display: block;
   margin: 0 auto;
 }
 /*---------------------------Rodapé----------------------------------*/
-footer {
+footer{
   margin-bottom: auto;
   position: fixed;
   background-color: black;
@@ -267,6 +316,6 @@ footer {
   height: 40px;
   text-align: center;
 }
-p {
+p{
   color: lime;
 }

@@ -2,6 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <title>Descrição</title>
 </head>
 <body>
@@ -10,20 +11,21 @@
     <nav>
       <h1 style="text-align: center;"><img src="images/logo.png" alt="Ícone do Site" class="site-icon"></h1>
       <ul class="nav-links">
-        <li><a href="/">Página Inicial</a></li>
-        <li><a href="/descricao">Descrição</a></li>
-        <li><a href="/tecnologia">Tecnologias</a></li>
-        <li><a href="/desenvolvedor">Desenvolvedores</a></li>
-        <li><a href="/contato">Contato</a></li>
-        <li><a href="/login">Login</a></li>
-      </ul>
+        <li><i class="fas fa-home"></i> <a href="/">Página Inicial</a></li>
+        <li><i class="fas fa-info-circle"></i> <a href="/descricao">Descrição</a></li>
+        <li><i class="fas fa-cogs"></i> <a href="/tecnologia">Tecnologias</a></li>
+        <li><i class="fas fa-users"></i> <a href="/desenvolvedor">Desenvolvedores</a></li>
+        <li><i class="fas fa-comment-dots"></i> <a href="/contato">Contato</a></li>
+        <li><i class="fas fa-sign-in-alt"></i> <a href="/login">Login</a></li>
+      </ul>      
     </nav>
   </header>  
     <div class="container">
-      <h3> <%= conteudo %> </h3>
+      <h3 class="centered-content"> <%= conteudo %> </h3>
     </div>
   <footer>
     <p>© 2023 Projeto Web Ciclo 1. Todos os direitos reservados.</p>
   </footer>
+  <a href="/login" class="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</a>
 </body>
 </html>

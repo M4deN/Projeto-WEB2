@@ -46,7 +46,8 @@ module.exports = (app) => {
 
   // Rota da página de desenvolvedores
   app.get('/desenvolvedor', (req, res) => {
-    res.render('desenvolvedor');
+    const desenvolvedor = fs.readFileSync('./conteudo/desenvolvedor.txt', 'utf8');
+    res.render('Desenvolvedor', { conteudo: desenvolvedor });
   });
 
   // Rota da página de contato
