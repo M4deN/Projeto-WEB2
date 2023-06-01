@@ -1,7 +1,8 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const fs = require('fs');
 const { enviarEmail } = require('../public/javascripts/email');
+const livrosController = require('../controllers/livrosController');
 
 module.exports = (app) => {
   // Rota da página login
@@ -11,18 +12,12 @@ module.exports = (app) => {
 
   // Rota de autenticação do login
   app.post('/login', (req, res) => {
-    const { username1, password2 } = req.body;
-    if (username1 === 'teste@email.com' && password2 === '1234') {
+    const { username, password } = req.body;
+    if (username === 'admin' && password === 'senha123') {
       res.redirect('/');
     } else {
-      // Exibir uma mensagem de erro
-      const script = `
-        <script>
-          alert('Credenciais inválidas. Por favor, tente novamente.');
-          window.location.href = '/login';
-        </script>
-      `;
-      res.send(script);
+      const mensagemErro = 'Credenciais inválidas. Por favor, tente novamente.';
+      res.status(401).render('login', { error: mensagemErro });
     }
   });
 
@@ -56,6 +51,23 @@ module.exports = (app) => {
   });
 
   // Rota para o envio do formulário de contato
-app.post('/contato/enviar', enviarEmail);
+  app.post('/contato/enviar', enviarEmail);
+
+  // Rotas da API REST
+
+  // GET /livros: Obter a lista de todos os livros
+  app.get('/livros', livrosController.obterLivros);
+
+  // POST /livros: Adicionar um novo livro
+  app.post('/livros', livrosController.adicionarLivro);
+
+  // GET /livros/{id}: Obter detalhes de um livro específico
+  app.get('/livros/:id', livrosController.obterDetalhesLivro);
+
+  // PUT /livros/{id}: Atualizar as informações de um livro específico
+  app.put('/livros/:id', livrosController.atualizarLivro);
+
+  // DELETE /livros/{id}: Excluir um livro específico
+  app.delete('/livros/:id', livrosController.excluirLivro);
 };
 
