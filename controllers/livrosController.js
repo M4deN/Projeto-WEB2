@@ -1,7 +1,7 @@
 const Livro = require('../models/livro');
 
 
-// Obtém a lista de todos os livros
+// lista de todos os livros
 const obterLivros = async (req, res) => {
   try {
     const livros = await Livro.find().exec();
@@ -27,7 +27,7 @@ const adicionarLivro = async (req, res) => {
   }
 };
 
-// Obtém os detalhes de um livro específico
+// detalhes de um livro específico
 const obterDetalhesLivro = async (req, res) => {
   try {
     const livroId = req.params.id;

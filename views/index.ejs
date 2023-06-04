@@ -3,9 +3,20 @@
 <head>
   <link rel="stylesheet" href="stylesheets/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <title>Pagina Inicial</title>
+  <title>Página Inicial</title>
 </head>
 <body>
+  <% if (user) { %>
+    <div class="logout-button">
+      <a href="/login" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>  
+    <div class="alter-button">
+      <a href="/alterar"><i class="fas fa-user-edit"></i> Alterar Dados</a>
+    </div>
+    <div class="del-button">
+      <a href="/excluir"><i class="fas fa-trash-alt"></i> Excluir Conta</a>
+    </div>
+  <% } %>  
   <h1>BOOK EXPRESS</h1>
   <header>
     <nav>
@@ -24,8 +35,8 @@
     <h3><%= conteudo %></h3>    
     <div class="login-form">
       <form action="/login" method="post">
-        <input type="email" id="email1" placeholder="E-mail" name="email1" required>
-        <input type="password" id="senha1" placeholder="Senha" name="senha1" required>
+        <input type="email" id="email" placeholder="E-mail" name="email" required>
+        <input type="password" id="senha" placeholder="Senha" name="senha" required>
         <button type="submit">Entrar</button>
       </form>
     </div>
@@ -33,6 +44,11 @@
   <footer>
     <p>© 2023 Projeto Web Ciclo 1. Todos os direitos reservados.</p>
   </footer>
-  <a href="/login" class="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  <% if (typeof message !== 'undefined' && message) { %>
+    <script>
+      alert('<%= message %>'); 
+      window.location.href = "/index";
+    </script>
+  <% } %>
 </body>
 </html>

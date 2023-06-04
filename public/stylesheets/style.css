@@ -53,7 +53,7 @@ h4{
 }
 /*--------------------------Efeito-Botões-------------------------------*/
 button[type="submit"],
-button{
+button {
   display: block;
   margin: 0 auto;
   width: 150px;
@@ -61,7 +61,11 @@ button{
   font-weight: bold;
   transition: background-color 0.3s ease, color 0.3s ease;
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
+}
+
+button.cadastro-button {
+  margin-top: -10px;
 }
 
 button:hover{
@@ -135,23 +139,47 @@ li{
   color: lime;
   transition: color 0.3s ease;
 }
-.logout-button {
-  position: fixed;
-  top: 10px;
-  right: 10px;
+.logout-button,
+.alter-button,
+.del-button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: sticky;
+  margin-right: auto;
+  margin-top: auto;
+  margin-left: -60px;
+}
+
+.logout-button a,
+.alter-button a,
+.del-button a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   color: white;
   text-decoration: none;
   transition: color 0.3s ease;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-right: 10px;
 }
 
-.logout-button i {
-  margin-right: 5px;
-}
-
-.logout-button:hover {
+.logout-button:hover a,
+.alter-button:hover a,
+.del-button:hover a {
   color: lime;
 }
+
 i.fas.fa-lock {
+  margin-top: 40px;
+  font-size: 30px; 
+  color: #ffffff; 
+  align-items: center;
+  margin-bottom: -30px;
+}
+
+i.fas.fa-user-plus {
   margin-top: 40px;
   font-size: 30px; 
   color: #ffffff; 
@@ -300,11 +328,63 @@ button[type="submit"]{
   margin-top: 100px;
   align-items: center;
   width: 40%;
-  margin-bottom: 10px;
+  margin-bottom: -10px;
 }
 button[type="submit"]{
   display: block;
   margin: 0 auto;
+}
+.form-group-cadastro-button{
+  margin-top: 100px;
+  align-items: center;
+  width: 40%;
+  margin-bottom: -10px;
+}
+button[type="button"]{
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+/*---------------------------cadastro----------------------------------*/
+.form-group-cadastro{
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 70px;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 400px;
+  max-width: 100%;
+  margin-bottom: -10px;
+}
+.form-group-cadastro input{
+  margin-bottom: 20px;
+  display: block;  
+  width: 100%;
+  width: 400px;
+  height: 35px;
+}
+.form-group-cadastro button{
+  margin-top: 100px;
+  align-items: center;
+  width: 40%;
+  margin-bottom: -10px;
+}
+button[type="submit"]{
+  display: block;
+  margin: 0 auto;
+}
+.form-group-cadastro-button{
+  margin-top: 100px;
+  align-items: center;
+  width: 40%;
+  margin-bottom: -10px;
+}
+button[type="button"]{
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
 }
 /*---------------------------Rodapé----------------------------------*/
 footer{

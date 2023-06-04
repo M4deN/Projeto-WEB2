@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Cadastro</title>
+</head>
+<body>
+  <div class="container">
+    <i class="fas fa-user-plus"></i>
+    <h4>CADASTRO</h4>
+    <form action="/cadastro" method="POST">      
+      <div class="form-group-cadastro">
+        <input type="email" name="email" placeholder="E-mail" required> 
+        <input type="password" name="senha" placeholder="Senha" required>   
+        <input type="text" name="nome" placeholder="Nome" required>   
+        <button type="submit">Cadastrar</button>
+      </div>
+    </form>
+  </div>
+  <footer>
+    <p>© 2023 Projeto Web Ciclo 1. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
