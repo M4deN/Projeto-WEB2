@@ -5,7 +5,7 @@ const cadastroRouter = require("../public/javascripts/cadastro");
 const loginRouter = require("../public/javascripts/login");
 const User = require("../public/javascripts/user");
 const session = require('express-session');
-const alterRouter = require('../public/javascripts/alterar');
+const loadData = require("../models/carga");
 const crypto = require('crypto');
 
 
@@ -33,6 +33,20 @@ module.exports = (app) => {
     res.render('login');
   });
 
+  // Defina a rota de carga
+  app.get('/carga', async (req, res) => {
+    try {
+      await loadData();
+      const successMessage = 'Carga automática de dados concluída com sucesso!';
+      console.log(successMessage);
+      res.send(`<script>alert("${successMessage}"); window.location.href = "/";</script>`);
+    } catch (error) {
+      console.error('Erro ao realizar carga automática de dados:', error);
+      const errorMessage = 'Erro ao realizar carga automática de dados';
+      res.send(`<script>alert("${errorMessage}"); window.location.href = "/";</script>`);
+    }
+  });
+
   // Rota para verificar se o usuário está logado
   app.get('/verificar-login', (req, res) => {
     if (req.session.user) {
@@ -55,7 +69,7 @@ module.exports = (app) => {
         console.error('Erro ao encerrar a sessão:', err);
         res.status(500).send('Erro ao encerrar a sessão');
       } else {
-        res.redirect('/login'); // Redirecionar para a página de login
+        res.redirect('/login');
       }
     });
   });
@@ -102,14 +116,12 @@ module.exports = (app) => {
   app.post('/alterar', (req, res, next) => {
     // Verificar se há um usuário na sessão
     if (req.session.user) {
-      const user = req.session.user; // Definir a variável 'user' com os dados do usuário
+      const user = req.session.user;
       next(); // Passar para a próxima função de middleware
     } else {
-      // Usuário não está logado, redirecionar para a página de login
       res.redirect('/login');
     }
   }, (req, res) => {
-    // Lógica para atualizar o usuário usando a variável 'user'
     res.send('Usuário atualizado com sucesso!');
   });
 
@@ -141,7 +153,7 @@ module.exports = (app) => {
           res.status(500).send(`<script>alert("${errorMessage}"); window.location.href = "/perfil";</script>`);
         });
     } else {
-      res.redirect('/login'); // Redirecionar para a página de login se o usuário não estiver logado
+      res.redirect('/login');
     }
   });
 
