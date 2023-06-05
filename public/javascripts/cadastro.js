@@ -3,21 +3,21 @@ const User = require("../javascripts/user");
 
 const router = express.Router();
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   const { email, senha, nome } = req.body;
 
-  const newUser = new User({ email, senha, nome });
+  try {
+    const newUser = new User({ email, senha, nome });
+    await newUser.save();
 
-  newUser.save()
-    .then(() => {
-      // Sucesso ao salvar o usuário
-      res.redirect('/login');
-    })
-    .catch((error) => {
-      // Erro ao salvar o usuário
-      console.error('Erro ao salvar usuário no MongoDB:', error);
-      res.status(500).send('Erro ao cadastrar usuário');
-    });
+    // Sucesso ao cadastrar o usuário
+    const successMessage = 'Usuário cadastrado com sucesso';
+    res.send(`<script>alert("${successMessage}"); window.location.href = "/login";</script>`);
+  } catch (error) {
+    // Erro ao salvar o usuário
+    console.error('Erro ao salvar usuário no MongoDB:', error);
+    res.status(500).send('Erro ao cadastrar usuário');
+  }
 });
 
 module.exports = router;

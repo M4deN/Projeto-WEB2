@@ -11,13 +11,12 @@ router.post('/excluir', (req, res) => {
     // Excluir a conta do usuário no banco de dados
     User.findByIdAndRemove(userId)
       .then(() => {
-        // Remoção bem-sucedida
         req.session.destroy((err) => {
           if (err) {
             console.error('Erro ao encerrar a sessão:', err);
             res.status(500).send('Erro ao encerrar a sessão');
           } else {
-            res.redirect('/login'); // Redirecionar para a página de login após a exclusão da conta
+            res.redirect('/login'); 
           }
         });
       })
@@ -26,7 +25,7 @@ router.post('/excluir', (req, res) => {
         res.status(500).send('Erro ao excluir usuário');
       });
   } else {
-    res.redirect('/login'); // Redirecionar para a página de login se o usuário não estiver logado
+    res.redirect('/login'); 
   }
 });
 

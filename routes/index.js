@@ -7,6 +7,7 @@ const cadastroRouter = require("../public/javascripts/cadastro");
 const User = require("../public/javascripts/user");
 const session = require('express-session');
 const alterRouter = require('../public/javascripts/alterar');
+const excluirRouter = require("../public/javascripts/excluir");
 const crypto = require('crypto');
 
 
@@ -124,7 +125,11 @@ app.get('/logout', (req, res) => {
   app.get('/alterar', (req, res) => {
     res.render('alterar');
   });
-  
+
+  // Rota para o envio do formulário de contato
+  app.post('/contato/enviar', enviarEmail);
+
+  //Alterar Usuário
   app.post('/alterar', (req, res, next) => {
     // Verificar se há um usuário na sessão
     if (req.session.user) {
@@ -139,12 +144,11 @@ app.get('/logout', (req, res) => {
     res.send('Usuário atualizado com sucesso!');
   });
   
-
+//Deletar Usuario
  app.get('/excluir', (req, res) => {
   // Verificar se há um usuário na sessão
   if (req.session.user) {
     const user = req.session.user;
-
     // Excluir o usuário do banco de dados
     User.findByIdAndDelete(user._id)
       .then(() => {
@@ -169,12 +173,7 @@ app.get('/logout', (req, res) => {
   }
 });
 
-
-  // Rota para o envio do formulário de contato
-  app.post('/contato/enviar', enviarEmail);
-
   // Rotas da API REST
-
   // GET /livros: Obter a lista de todos os livros
   app.get('/livros', livrosController.obterLivros);
 
