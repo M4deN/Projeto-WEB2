@@ -1,9 +1,8 @@
-const express = require('express');
-const router = express.Router();
 const fs = require('fs');
 const { enviarEmail } = require('../public/javascripts/email');
 const livrosController = require('../controllers/livrosController');
 const cadastroRouter = require("../public/javascripts/cadastro");
+const loginRouter = require("../public/javascripts/login");
 const User = require("../public/javascripts/user");
 const session = require('express-session');
 const alterRouter = require('../public/javascripts/alterar');
@@ -11,84 +10,55 @@ const crypto = require('crypto');
 
 
 module.exports = (app) => {
-  
+
   const generateRandomKey = () => {
     return crypto.randomBytes(32).toString('hex');
   };
-  
-  const chaveSecreta = generateRandomKey();
-  console.log("chave gerada: ",chaveSecreta);
 
-// Rota da página login
+  const chaveSecreta = generateRandomKey();
+  console.log("chave gerada: ", chaveSecreta);
+
+  // Configuracao uso de sessão
+  app.use(session({
+    secret: chaveSecreta,
+    resave: false,
+    saveUninitialized: true,
+  }));
+
+  // Rota da página login
+  app.use('/login', loginRouter);
+
+  // Rota da página de login
   app.get('/login', (req, res) => {
     res.render('login');
   });
 
-// Configuracao uso de sessão
-app.use(session({
-  secret: chaveSecreta,
-  resave: false,
-  saveUninitialized: true,
-}));
-
-// Rota de login
-app.post('/login', async (req, res) => {
-  const { senha, email } = req.body;
-
-  try {
-    const user = await User.findOne({ email });
-
-    if (user) {
-      if (senha === user.senha) {
-        // Definicao dados na sessão
-        req.session.user = user;
-
-        const welcomeMessage = `Bem-vindo, ${user.nome}!`;
-        res.send(`<script>alert("${welcomeMessage}"); window.location.href = "/";</script>`);
-
-      } else {
-        const errorMessage = 'Senha inválida';
-        res.send(`<script>alert("${errorMessage}"); window.location.href = "/login";</script>`);
-      }
+  // Rota para verificar se o usuário está logado
+  app.get('/verificar-login', (req, res) => {
+    if (req.session.user) {
+      // Usuário está logado
+      const nomeUsuario = req.session.user.nome;
+      const mensagem = `Bem-vindo, ${nomeUsuario}!`;
+      res.send(`<script>alert("${mensagem}"); window.location.href = "/";</script>`);
     } else {
-      const errorMessage = 'Usuário não encontrado';
-      res.send(`<script>alert("${errorMessage}"); window.location.href = "/login";</script>`);
-    }
-  } catch (error) {
-    console.error('Erro ao realizar o login:', error);
-    res.status(500).send('Erro ao realizar o login');
-  }
-});
-
-// Rota para verificar se o usuário está logado
-app.get('/verificar-login', (req, res) => {
-  if (req.session.user) {
-    // Usuário está logado
-    const nomeUsuario = req.session.user.nome;
-    const mensagem = `Bem-vindo, ${nomeUsuario}!`;
-    res.send(`<script>alert("${mensagem}"); window.location.href = "/";</script>`);
-  } else {
-    // Usuário não está logado
-    const mensagem = 'Você precisa fazer login';
-    res.send(`<script>alert("${mensagem}"); window.location.href = "/login";</script>`);
-  }
-});
-
-
-
-//Rota para deslogar o usuário
-app.get('/logout', (req, res) => {
-  // Limpar os dados da sessão
-  req.session.destroy((err) => {
-    if (err) {
-      console.error('Erro ao encerrar a sessão:', err);
-      res.status(500).send('Erro ao encerrar a sessão');
-    } else {
-      res.redirect('/login'); // Redirecionar para a página de login
+      // Usuário não está logado
+      const mensagem = 'Você precisa fazer login';
+      res.send(`<script>alert("${mensagem}"); window.location.href = "/login";</script>`);
     }
   });
-});
 
+  //Rota para deslogar o usuário
+  app.get('/logout', (req, res) => {
+    // Limpar os dados da sessão
+    req.session.destroy((err) => {
+      if (err) {
+        console.error('Erro ao encerrar a sessão:', err);
+        res.status(500).send('Erro ao encerrar a sessão');
+      } else {
+        res.redirect('/login'); // Redirecionar para a página de login
+      }
+    });
+  });
 
   // Rota da página inicial
   app.get('/', (req, res) => {
@@ -115,7 +85,7 @@ app.get('/logout', (req, res) => {
   });
 
   app.use('/cadastro', cadastroRouter);
-   // Rota da página de cadastro
+  // Rota da página de cadastro
   app.get('/cadastro', (req, res) => {
     res.render('cadastro');
   });
@@ -128,7 +98,7 @@ app.get('/logout', (req, res) => {
   app.get('/alterar', (req, res) => {
     res.render('alterar');
   });
-  
+
   app.post('/alterar', (req, res, next) => {
     // Verificar se há um usuário na sessão
     if (req.session.user) {
@@ -142,38 +112,38 @@ app.get('/logout', (req, res) => {
     // Lógica para atualizar o usuário usando a variável 'user'
     res.send('Usuário atualizado com sucesso!');
   });
-  
-   // Rota para o envio do formulário de contato
-   app.post('/contato/enviar', enviarEmail);
 
- //Deletar Usuario
- app.get('/excluir', (req, res) => {
-  // Verificar se há um usuário na sessão
-  if (req.session.user) {
-    const user = req.session.user;
-    // Excluir o usuário do banco de dados
-    User.findByIdAndDelete(user._id)
-      .then(() => {
-        // Remover os dados da sessão
-        req.session.destroy((err) => {
-          if (err) {
-            console.error('Erro ao encerrar a sessão:', err);
-            res.status(500).send('Erro ao encerrar a sessão');
-          } else {
-            const successMessage = 'Conta excluída com sucesso';
-            res.send(`<script>alert("${successMessage}"); window.location.href = "/login";</script>`);
-          }
+  // Rota para o envio do formulário de contato
+  app.post('/contato/enviar', enviarEmail);
+
+  //Deletar Usuario
+  app.get('/excluir', (req, res) => {
+    // Verificar se há um usuário na sessão
+    if (req.session.user) {
+      const user = req.session.user;
+      // Excluir o usuário do banco de dados
+      User.findByIdAndDelete(user._id)
+        .then(() => {
+          // Remover os dados da sessão
+          req.session.destroy((err) => {
+            if (err) {
+              console.error('Erro ao encerrar a sessão:', err);
+              res.status(500).send('Erro ao encerrar a sessão');
+            } else {
+              const successMessage = 'Conta excluída com sucesso';
+              res.send(`<script>alert("${successMessage}"); window.location.href = "/login";</script>`);
+            }
+          });
+        })
+        .catch(error => {
+          console.error('Erro ao excluir usuário no MongoDB:', error);
+          const errorMessage = 'Erro ao excluir conta do usuário';
+          res.status(500).send(`<script>alert("${errorMessage}"); window.location.href = "/perfil";</script>`);
         });
-      })
-      .catch(error => {
-        console.error('Erro ao excluir usuário no MongoDB:', error);
-        const errorMessage = 'Erro ao excluir conta do usuário';
-        res.status(500).send(`<script>alert("${errorMessage}"); window.location.href = "/perfil";</script>`);
-      });
-  } else {
-    res.redirect('/login'); // Redirecionar para a página de login se o usuário não estiver logado
-  }
-});
+    } else {
+      res.redirect('/login'); // Redirecionar para a página de login se o usuário não estiver logado
+    }
+  });
 
   // Rotas da API REST
   // GET /livros: Obter a lista de todos os livros
