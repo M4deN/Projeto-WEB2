@@ -7,7 +7,6 @@ const cadastroRouter = require("../public/javascripts/cadastro");
 const User = require("../public/javascripts/user");
 const session = require('express-session');
 const alterRouter = require('../public/javascripts/alterar');
-const excluirRouter = require("../public/javascripts/excluir");
 const crypto = require('crypto');
 
 
@@ -60,21 +59,24 @@ app.post('/login', async (req, res) => {
     res.status(500).send('Erro ao realizar o login');
   }
 });
-//Rota Teste Usuário Logado
-app.get('/teste-sessao', (req, res) => {
-  // Verificar se há um usuário na sessão
+
+// Rota para verificar se o usuário está logado
+app.get('/verificar-login', (req, res) => {
   if (req.session.user) {
-    // Recuperar os dados do usuário da sessão
-    const user = req.session.user;
-    const mensagem = `Usuário logado: ${user.nome}`;
+    // Usuário está logado
+    const nomeUsuario = req.session.user.nome;
+    const mensagem = `Bem-vindo, ${nomeUsuario}!`;
     res.send(`<script>alert("${mensagem}"); window.location.href = "/";</script>`);
   } else {
-    const mensagem = 'Nenhum usuário logado';
+    // Usuário não está logado
+    const mensagem = 'Você precisa fazer login';
     res.send(`<script>alert("${mensagem}"); window.location.href = "/login";</script>`);
   }
 });
 
-// Rota para deslogar o usuário
+
+
+//Rota para deslogar o usuário
 app.get('/logout', (req, res) => {
   // Limpar os dados da sessão
   req.session.destroy((err) => {
@@ -86,6 +88,7 @@ app.get('/logout', (req, res) => {
     }
   });
 });
+
 
   // Rota da página inicial
   app.get('/', (req, res) => {
@@ -125,11 +128,7 @@ app.get('/logout', (req, res) => {
   app.get('/alterar', (req, res) => {
     res.render('alterar');
   });
-
-  // Rota para o envio do formulário de contato
-  app.post('/contato/enviar', enviarEmail);
-
-  //Alterar Usuário
+  
   app.post('/alterar', (req, res, next) => {
     // Verificar se há um usuário na sessão
     if (req.session.user) {
@@ -144,7 +143,10 @@ app.get('/logout', (req, res) => {
     res.send('Usuário atualizado com sucesso!');
   });
   
-//Deletar Usuario
+   // Rota para o envio do formulário de contato
+   app.post('/contato/enviar', enviarEmail);
+
+ //Deletar Usuario
  app.get('/excluir', (req, res) => {
   // Verificar se há um usuário na sessão
   if (req.session.user) {

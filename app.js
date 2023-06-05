@@ -15,6 +15,7 @@ const mongoDBURL = process.env.MONGODB_URL;
 // Configuração do middleware para processar os dados do formulário
 app.use(express.urlencoded({ extended: false }));
 
+
 app.use(bodyParser.json()); // Adicionando a configuração do bodyParser
 
 // Configuração do diretório público para servir arquivos estáticos
