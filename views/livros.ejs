@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Livros</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="/stylesheets/livro.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Lista de Livros <i class="fas fa-book"></i></h1>
+
+    <ul id="livros-lista">
+        <% livros.forEach(function(livro) { %>
+          <li>
+            <img src="images/book.png">
+            <p>Título: <%= livro.titulo %></p>
+            <p>Autor: <%= livro.autor %></p>
+            <p>Ano de Publicação: <%= livro.anoPublicacao %></p>
+            <p>Editora: <%= livro.editora %></p>
+            <button onclick="editarLivro('<%= livro._id %>')">Editar</button>
+            <button onclick="excluirLivro('<%= livro._id %>')">Excluir</button>
+          </li>
+        <% }) %>
+      </ul>
+      <script src="livros.js"></script>
+    <div id="detalhes-livro"></div>
+  </div>
+  <footer>
+    <p>© 2023 Projeto Web Ciclo 1. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

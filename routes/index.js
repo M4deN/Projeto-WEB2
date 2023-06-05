@@ -7,10 +7,11 @@ const User = require("../public/javascripts/user");
 const session = require('express-session');
 const loadData = require("../models/carga");
 const crypto = require('crypto');
-
+const Livro = require("../models/livro");
 
 module.exports = (app) => {
 
+  
   const generateRandomKey = () => {
     return crypto.randomBytes(32).toString('hex');
   };
@@ -159,8 +160,16 @@ module.exports = (app) => {
 
   // Rotas da API REST
   // GET /livros: Obter a lista de todos os livros
-  app.get('/livros', livrosController.obterLivros);
-
+  app.get('/livros', async (req, res) => {
+    try {
+      const livros = await Livro.find().exec();
+      res.render('livros', { livros });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Erro ao obter a lista de livros');
+    }
+  });
+  
   // POST /livros: Adicionar um novo livro
   app.post('/livros', livrosController.adicionarLivro);
 
