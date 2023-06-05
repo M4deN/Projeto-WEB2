@@ -170,7 +170,9 @@ module.exports = (app) => {
     }
   });
   
-  // POST /livros: Adicionar um novo livro
+  app.get('/adicionar', (req, res) => {
+    res.render('adicionar');
+  });
   app.post('/livros', livrosController.adicionarLivro);
 
   // GET /livros/{id}: Obter detalhes de um livro específico

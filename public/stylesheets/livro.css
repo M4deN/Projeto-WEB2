@@ -103,4 +103,48 @@ body {
     height: 40px;
     text-align: center;
   }
+  footer p {
+    color: lime;
+  }
+  #add-book-button {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    font-weight: bold;
+  }
   
+  #add-book-button:hover {
+    background-color: lime;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+  }
+
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 13px;
+  }
+
+  button {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: lime;
+  }

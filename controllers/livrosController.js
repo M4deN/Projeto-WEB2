@@ -19,13 +19,17 @@ const adicionarLivro = async (req, res) => {
   try {
     const novoLivro = req.body;
     const livroCriado = await Livro.create(novoLivro);
-    res.send(livroCriado);
-    console.log('ADICIONOU ESSA PORR****');
+    
+    const successMessage = 'Livro adicionado com sucesso!';
+    const script = `<script>alert("${successMessage}"); window.location.href = "/livros";</script>`;
+    res.send(script);
   } catch (error) {
-    console.error(error);
-    res.status(500).send('Erro ao adicionar um novo livro');
+    const errorMessage = 'Erro ao adicionar um novo livro';
+    const script = `<script>alert("${errorMessage}"); window.location.href = "/livros/adicionar";</script>`;
+    res.send(script);
   }
 };
+
 
 // detalhes de um livro específico
 const obterDetalhesLivro = async (req, res) => {

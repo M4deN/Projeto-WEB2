@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Adicionar Novo Livro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="/stylesheets/livro.css">
+</head>
+<body>
+  <div class="container">
+    <h1>ADICIONAR NOVO LIVRO <i class="fas fa-plus"></i></h1>
+    <form method="POST" action="/livros">
+      <input type="text" id="titulo" name="titulo" placeholder="Título" required>
+      <input type="text" id="autor" name="autor" placeholder="Autor" required>
+      <input type="number" id="anoPublicacao" name="anoPublicacao" placeholder="Ano de Publicação" required>
+      <input type="text" id="editora" name="editora" placeholder="Editora" required>
+      <button id="add-book-button" type="submit">Adicionar Livro</button>
+    </form>
+  </div>
+</body>
+</html>
