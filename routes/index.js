@@ -192,11 +192,8 @@ module.exports = (app) => {
       res.status(500).send('Erro ao obter a lista de livros');
     }
   });
-  
-  
-  
-  
-  
+   
+  //Adicionar Livros
   app.get('/adicionar', (req, res) => {
     res.render('adicionar');
   });
