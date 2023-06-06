@@ -28,10 +28,14 @@ app.set('views', path.join(__dirname, 'views'));
 // Conexão com o MongoDB
 mongoose.connect(mongoDBURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log('Conexão com o MongoDB funcionando..');
+    console.log('Conexão com o MongoDB estabelecida.');
+    // Aqui você pode adicionar o código para adicionar o livro ou executar outras operações relacionadas ao banco de dados.
   })
   .catch((error) => {
-    console.error('Erro ao conectar ao MongoDB:', error);
+    const errorMessage = `Erro ao conectar ao MongoDB: ${error}`;
+    const script = `<script>alert("${errorMessage}"); window.location.href = "/livros/adicionar";</script>`;
+    res.send(script);
+    console.error('Falha na conexão com o MongoDB:', error);
   });
 
 // Configuração das rotas

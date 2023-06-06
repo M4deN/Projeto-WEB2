@@ -102,6 +102,7 @@ body {
     width: 100%;
     height: 40px;
     text-align: center;
+    position: fixed;
   }
   footer p {
     color: lime;
@@ -116,6 +117,7 @@ body {
     transition: background-color 0.3s;
     margin-top: 10px;
     font-weight: bold;
+    margin-left: 50px;
   }
   
   #add-book-button:hover {
@@ -148,3 +150,34 @@ body {
   button:hover {
     background-color: lime;
   }
+  .pagination {
+    margin-top: 10px;
+  }
+  
+  .pagination a {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-right: 5px;
+    background-color: #f1f1f1;
+    color: #555;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  
+  .pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+  }
+  #add-book-button,
+.pagination {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#add-book-button {
+  margin-right: 380px; 
+}

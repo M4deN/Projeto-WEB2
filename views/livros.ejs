@@ -8,8 +8,34 @@
 </head>
 <body>
   <div class="container">
-    <h1>CATÁLOGO DE LIVROS <i class="fas fa-book"></i></h1>    
-    <button id="add-book-button" onclick="window.location.href='/adicionar'"><i class="fas fa-plus"></i> Adicionar Novo Livro</button>
+    <h1>CATALOGO DE LIVROS <i class="fas fa-book"></i></h1>    
+    <div class="order-fields">
+      <label for="order-author">Ordenar por Autor:</label>
+      <select id="order-author">
+        <option value="asc">A-Z</option>
+        <option value="desc">Z-A</option>
+      </select>      
+      <label for="order-year">Ordenar por Ano:</label>
+      <select id="order-year">
+        <option value="asc">Mais antigo primeiro</option>
+        <option value="desc">Mais recente primeiro</option>
+      </select>
+    </div>    
+    <!-- Exibir a paginação -->
+    <div class="pagination">
+      <% if (totalPaginas > 1) { %>
+        <% if (pagina > 1) { %>
+          <a href="/livros?pagina=<%= pagina - 1 %>">Anterior</a>
+        <% } %>
+        <% for (let i = 1; i <= totalPaginas; i++) { %>
+          <a href="/livros?pagina=<%= i %>" class="<%= i === parseInt(pagina) ? 'active' : '' %>"><%= i %></a>
+        <% } %>
+        <% if (pagina < totalPaginas) { %>
+          <a href="/livros?pagina=<%= parseInt(pagina) + 1 %>">Próxima</a>
+        <% } %>
+      <% } %>
+    </div>    
+    <button id="add-book-button" onclick="window.location.href='/adicionar'"><i class="fas fa-plus"></i> Adicionar Novo Livro</button>    
     <ul id="livros-lista">
       <% livros.forEach(function(livro) { %>
         <li>
@@ -18,16 +44,16 @@
           <p>Autor: <%= livro.autor %></p>
           <p>Ano de Publicação: <%= livro.anoPublicacao %></p>
           <p>Editora: <%= livro.editora %></p>
-          <button onclick="editarLivro('<%= livro._id %>')">Editar</button>
-          <button onclick="excluirLivro('<%= livro._id %>')">Excluir</button>
+          <button class="editar-button" data-livro-id="<%= livro._id %>">Editar</button>
+          <button class="excluir-button" data-livro-id="<%= livro._id %>">Excluir</button>
         </li>
       <% }) %>
-    </ul>
-    <script src="livros.js"></script>
-    <div id="detalhes-livro"></div>
-  </div>
+    </ul>    
+  </div>  
   <footer>
     <p>© 2023 Projeto Web Ciclo 1. Todos os direitos reservados.</p>
-  </footer>
+  </footer>  
+  <script src="/javascripts/deleteLivro.js"></script>
+  <script src="/javascripts/ordenacaoLivros.js"></script>
 </body>
 </html>

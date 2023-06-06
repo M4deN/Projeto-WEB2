@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Livro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="/stylesheets/livro.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Editar Livro <i class="fas fa-edit"></i></h1>
+    <form method="POST" action="/livros/<%= livro._id %>">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="text" name="titulo" value="<%= livro.titulo %>" required>
+        <input type="number" name="anoPublicacao" value="<%= livro.anoPublicacao %>" required>
+        <input type="text" name="autor" value="<%= livro.autor %>" required>
+        <input type="text" name="editora" value="<%= livro.editora %>" required>
+        <button type="submit">Salvar</button>
+      </form>      
+  </div>
+  <footer>
+    <p>© 2023 Projeto Web Ciclo 1. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

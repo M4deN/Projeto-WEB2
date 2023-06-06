@@ -162,13 +162,40 @@ module.exports = (app) => {
   // GET /livros: Obter a lista de todos os livros
   app.get('/livros', async (req, res) => {
     try {
-      const livros = await Livro.find().exec();
-      res.render('livros', { livros });
+      const pagina = req.query.pagina || 1; // Obtém o número da página da consulta ou usa o valor padrão como 1
+      const registrosPorPagina = 6; // Define o número de registros por página
+      const orderAuthor = req.query.orderAuthor || ''; // Obtém o valor de ordenação por autor da consulta ou usa uma string vazia como padrão
+      const orderYear = req.query.orderYear || ''; // Obtém o valor de ordenação por ano da consulta ou usa uma string vazia como padrão
+      
+      let query = Livro.find()
+        .skip((pagina - 1) * registrosPorPagina)
+        .limit(registrosPorPagina);
+        
+      if (orderAuthor) {
+        const sortOrder = orderAuthor === 'asc' ? 1 : -1;
+        query = query.sort({ autor: sortOrder });
+      }
+      
+      if (orderYear) {
+        const sortOrder = orderYear === 'asc' ? 1 : -1;
+        query = query.sort({ anoPublicacao: sortOrder });
+      }
+  
+      const totalRegistros = await Livro.countDocuments(); // Obtém o número total de registros
+      const totalPaginas = Math.ceil(totalRegistros / registrosPorPagina); // Calcula o número total de páginas
+  
+      const livros = await query.exec();
+  
+      res.render('livros', { livros, totalPaginas, pagina: parseInt(pagina) });
     } catch (error) {
       console.error(error);
       res.status(500).send('Erro ao obter a lista de livros');
     }
   });
+  
+  
+  
+  
   
   app.get('/adicionar', (req, res) => {
     res.render('adicionar');
@@ -178,8 +205,12 @@ module.exports = (app) => {
   // GET /livros/{id}: Obter detalhes de um livro específico
   app.get('/livros/:id', livrosController.obterDetalhesLivro);
 
-  // PUT /livros/{id}: Atualizar as informações de um livro específico
-  app.put('/livros/:id', livrosController.atualizarLivro);
+  /// GET: Exibir formulário de edição de livro
+  app.get('/livros/:id/editar', livrosController.exibirFormularioEdicaoLivro);
+
+  // POST: Atualizar livro
+  app.post('/livros/:id', livrosController.atualizarLivro);
+
 
   // DELETE /livros/{id}: Excluir um livro específico
   app.delete('/livros/:id', livrosController.excluirLivro);

@@ -19,7 +19,7 @@ const adicionarLivro = async (req, res) => {
   try {
     const novoLivro = req.body;
     const livroCriado = await Livro.create(novoLivro);
-    
+
     const successMessage = 'Livro adicionado com sucesso!';
     const script = `<script>alert("${successMessage}"); window.location.href = "/livros";</script>`;
     res.send(script);
@@ -30,13 +30,12 @@ const adicionarLivro = async (req, res) => {
   }
 };
 
-
 // detalhes de um livro específico
 const obterDetalhesLivro = async (req, res) => {
   try {
     const livroId = req.params.id;
     const livro = await Livro.findById(livroId).exec();
-
+    console.log('entrou aqui');
     if (!livro) {
       return res.status(404).send('Livro não encontrado');
     }
@@ -52,19 +51,27 @@ const obterDetalhesLivro = async (req, res) => {
 const atualizarLivro = async (req, res) => {
   try {
     const livroId = req.params.id;
-    const atualizacaoLivro = req.body;
-    const livroAtualizado = await Livro.findByIdAndUpdate(livroId, atualizacaoLivro, { new: true }).exec();
+    const livroAtualizado = req.body;
 
-    if (!livroAtualizado) {
-      return res.status(404).send('Livro não encontrado');
+    const livro = await Livro.findByIdAndUpdate(livroId, livroAtualizado, { new: true }).exec();
+
+    if (!livro) {
+      const errorMessage = 'Livro não encontrado';
+      const script = `<script>alert("${errorMessage}"); window.location.href = "/livros";</script>`;
+      return res.send(script);
     }
 
-    res.send(livroAtualizado);
+    const successMessage = 'Livro atualizado com sucesso!';
+    const script = `<script>alert("${successMessage}"); window.location.href = "/livros";</script>`;
+    res.send(script);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Erro ao atualizar as informações do livro');
+    const errorMessage = 'Erro ao atualizar o livro';
+    const script = `<script>alert("${errorMessage}"); window.location.href = "/livros";</script>`;
+    res.send(script);
   }
 };
+
 
 // Exclui um livro específico
 const excluirLivro = async (req, res) => {
@@ -83,10 +90,27 @@ const excluirLivro = async (req, res) => {
   }
 };
 
+const exibirFormularioEdicaoLivro = async (req, res) => {
+  try {
+    const livroId = req.params.id;
+    const livro = await Livro.findById(livroId).exec();
+
+    if (!livro) {
+      return res.status(404).send('Livro não encontrado');
+    }
+
+    res.render('editar', { livro });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Erro ao exibir o formulário de edição do livro');
+  }
+};
+
 module.exports = {
   obterLivros,
   adicionarLivro,
   obterDetalhesLivro,
   atualizarLivro,
   excluirLivro,
+  exibirFormularioEdicaoLivro,
 };
