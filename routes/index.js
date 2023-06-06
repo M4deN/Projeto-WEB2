@@ -10,7 +10,6 @@ const crypto = require('crypto');
 const Livro = require("../models/livro");
 
 module.exports = (app) => {
-
   
   const generateRandomKey = () => {
     return crypto.randomBytes(32).toString('hex');
@@ -29,7 +28,6 @@ module.exports = (app) => {
   // Rota da página login
   app.use('/login', loginRouter);
 
-  // Rota da página de login
   app.get('/login', (req, res) => {
     res.render('login');
   });
@@ -110,6 +108,7 @@ module.exports = (app) => {
     res.render('contato');
   });
 
+  // Rota da página alterar user
   app.get('/alterar', (req, res) => {
     res.render('alterar');
   });
@@ -162,10 +161,10 @@ module.exports = (app) => {
   // GET /livros: Obter a lista de todos os livros
   app.get('/livros', async (req, res) => {
     try {
-      const pagina = req.query.pagina || 1; // Obtém o número da página da consulta ou usa o valor padrão como 1
-      const registrosPorPagina = 6; // Define o número de registros por página
-      const orderAuthor = req.query.orderAuthor || ''; // Obtém o valor de ordenação por autor da consulta ou usa uma string vazia como padrão
-      const orderYear = req.query.orderYear || ''; // Obtém o valor de ordenação por ano da consulta ou usa uma string vazia como padrão
+      const pagina = req.query.pagina || 1; 
+      const registrosPorPagina = 6; 
+      const orderAuthor = req.query.orderAuthor || ''; 
+      const orderYear = req.query.orderYear || ''; 
       
       let query = Livro.find()
         .skip((pagina - 1) * registrosPorPagina)
@@ -181,8 +180,8 @@ module.exports = (app) => {
         query = query.sort({ anoPublicacao: sortOrder });
       }
   
-      const totalRegistros = await Livro.countDocuments(); // Obtém o número total de registros
-      const totalPaginas = Math.ceil(totalRegistros / registrosPorPagina); // Calcula o número total de páginas
+      const totalRegistros = await Livro.countDocuments(); 
+      const totalPaginas = Math.ceil(totalRegistros / registrosPorPagina); 
   
       const livros = await query.exec();
   

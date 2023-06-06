@@ -29,7 +29,6 @@ app.set('views', path.join(__dirname, 'views'));
 mongoose.connect(mongoDBURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Conexão com o MongoDB estabelecida.');
-    // Aqui você pode adicionar o código para adicionar o livro ou executar outras operações relacionadas ao banco de dados.
   })
   .catch((error) => {
     const errorMessage = `Erro ao conectar ao MongoDB: ${error}`;
