@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <title>Página Inicial</title>
 </head>
@@ -20,7 +20,7 @@
   <h1>BOOK EXPRESS</h1>
   <header>
     <nav>
-      <h1 style="text-align: center;"><img src="images/logo.png" alt="Ícone do Site" class="site-icon"></h1>
+      <h1 style="text-align: center;"><img src="/images/logo.png" alt="Ícone do Site" class="site-icon"></h1>
       <ul class="nav-links">
         <li><i class="fas fa-home"></i> <a href="/">Página Inicial</a></li>
         <li><i class="fas fa-info-circle"></i> <a href="/descricao">Descrição</a></li>
@@ -28,18 +28,19 @@
         <li><i class="fas fa-users"></i> <a href="/desenvolvedor">Desenvolvedores</a></li>
         <li><i class="fas fa-comment-dots"></i> <a href="/contato">Contato</a></li>
         <li><i class="fas fa-sign-in-alt"></i> <a href="/login">Login</a></li>
-      </ul>      
+        <li><i class="fas fa-book"></i> <a href="/livros">Livro</a></li> 
+      </ul>          
     </nav>
   </header>  
   <div class="container">
     <h3><%= conteudo %></h3>    
     <div class="login-form">
-      <form action="/login" method="post">
+      <form action="/" method="post">
         <input type="email" id="email" placeholder="E-mail" name="email" required>
         <input type="password" id="senha" placeholder="Senha" name="senha" required>
         <button type="submit">Entrar</button>
       </form>
-    </div>
+    </div>  
   </div>
   <footer>
     <p>© 2023 Projeto Web Ciclo 1. Todos os direitos reservados.</p>

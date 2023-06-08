@@ -3,7 +3,7 @@ const { enviarEmail } = require('../public/javascripts/email');
 const livrosController = require('../controllers/livrosController');
 const cadastroRouter = require("../public/javascripts/cadastro");
 const loginRouter = require("../public/javascripts/login");
-const User = require("../public/javascripts/user");
+const User = require("../models/user");
 const session = require('express-session');
 const loadData = require("../models/carga");
 const crypto = require('crypto');
@@ -32,6 +32,19 @@ module.exports = (app) => {
     res.render('login');
   });
 
+  // Middleware para verificar se o usuário está autenticado
+  const verificarAutenticacao = (req, res, next) => {
+    // Verificar se há um usuário autenticado na sessão ou no token de autenticação
+  
+    if (req.session.user) {
+      // O usuário está autenticado, continue para a próxima rota
+      next();
+    } else {
+      // O usuário não está autenticado, redirecione para a página de login ou retorne um erro
+      res.redirect('/login');
+    }
+  };
+
   // Defina a rota de carga
   app.get('/carga', async (req, res) => {
     try {
@@ -54,11 +67,11 @@ module.exports = (app) => {
       const mensagem = `Bem-vindo, ${nomeUsuario}!`;
       res.send(`<script>alert("${mensagem}"); window.location.href = "/";</script>`);
     } else {
-      // Usuário não está logado
+      // Nenhum usuário ou admin está logado
       const mensagem = 'Você precisa fazer login';
       res.send(`<script>alert("${mensagem}"); window.location.href = "/login";</script>`);
     }
-  });
+  }); 
 
   //Rota para deslogar o usuário
   app.get('/logout', (req, res) => {
@@ -72,7 +85,7 @@ module.exports = (app) => {
       }
     });
   });
-
+  
   // Rota da página inicial
   app.get('/', (req, res) => {
     const tecnologia = fs.readFileSync('./conteudo/index.txt', 'utf8');
@@ -108,23 +121,63 @@ module.exports = (app) => {
     res.render('contato');
   });
 
-  // Rota da página alterar user
-  app.get('/alterar', (req, res) => {
-    res.render('alterar');
-  });
-
-  app.post('/alterar', (req, res, next) => {
+ // Rota para exibir o formulário de alteração do usuário
+app.get('/alterar', async (req, res) => {
+  try {
     // Verificar se há um usuário na sessão
     if (req.session.user) {
       const user = req.session.user;
-      next(); // Passar para a próxima função de middleware
+      res.render('alterar', { user });
     } else {
       res.redirect('/login');
     }
-  }, (req, res) => {
-    res.send('Usuário atualizado com sucesso!');
-  });
+  } catch (error) {
+    console.error('Erro ao exibir formulário de alteração do usuário:', error);
+    res.status(500).send('Erro ao exibir formulário de alteração do usuário');
+  }
+});
 
+// Rota para atualizar os dados do usuário
+app.post('/alterar/:id', async (req, res) => {
+  try {
+    // Verificar se há um usuário na sessão
+    if (req.session.user) {
+      const userId = req.params.id;
+      const { email, senha, nome } = req.body;
+      const user = req.session.user;
+
+      // Verificar se o ID do usuário na sessão corresponde ao ID fornecido na rota
+      if (user._id.toString() !== userId) {
+        const errorMessage = 'Acesso não autorizado';
+        res.send(`<script>alert("${errorMessage}"); window.location.href = "/login";</script>`);
+        return;
+      }
+      // Buscar o usuário existente pelo ID
+      const existingUser = await User.findById(userId);
+      if (existingUser) {
+        existingUser.email = email;
+        existingUser.senha = senha;
+        existingUser.nome = nome;
+        // Salvar as alterações no banco de dados
+        await existingUser.save();
+        // Atualizar o usuário na sessão
+        req.session.user = existingUser;
+        const successMessage = 'Dados atualizados com sucesso';
+        res.send(`<script>alert("${successMessage}"); window.location.href = "/";</script>`);
+      } else {
+        // Usuário não encontrado
+        const errorMessage = 'Usuário não encontrado';
+        res.send(`<script>alert("${errorMessage}"); window.location.href = "/login";</script>`);
+      }
+    } else {
+      res.redirect('/login');
+    }
+  } catch (error) {
+    console.error('Erro ao atualizar dados do usuário:', error);
+    res.status(500).send('Erro ao atualizar dados do usuário');
+  }
+});
+  
   // Rota para o envio do formulário de contato
   app.post('/contato/enviar', enviarEmail);
 
@@ -156,7 +209,7 @@ module.exports = (app) => {
       res.redirect('/login');
     }
   });
-
+  
   // Rotas da API REST
   // GET /livros: Obter a lista de todos os livros
   app.get('/livros', async (req, res) => {
@@ -181,34 +234,38 @@ module.exports = (app) => {
       }
   
       const totalRegistros = await Livro.countDocuments(); 
-      const totalPaginas = Math.ceil(totalRegistros / registrosPorPagina); 
-  
+      const totalPaginas = Math.ceil(totalRegistros / registrosPorPagina);   
       const livros = await query.exec();
   
-      res.render('livros', { livros, totalPaginas, pagina: parseInt(pagina) });
+      // Verificar se há um usuário na sessão
+      const usuarioLogado = req.session.user ? true : false;
+  
+      res.render('livros', { livros, totalPaginas, pagina: parseInt(pagina), usuarioLogado });
     } catch (error) {
       console.error(error);
       res.status(500).send('Erro ao obter a lista de livros');
     }
-  });
+  });  
    
   //Adicionar Livros
-  app.get('/adicionar', (req, res) => {
+  app.get('/adicionar', verificarAutenticacao, (req, res) => {
     res.render('adicionar');
   });
+  
   app.post('/livros', livrosController.adicionarLivro);
 
   // GET /livros/{id}: Obter detalhes de um livro específico
   app.get('/livros/:id', livrosController.obterDetalhesLivro);
 
-  /// GET: Exibir formulário de edição de livro
-  app.get('/livros/:id/editar', livrosController.exibirFormularioEdicaoLivro);
+  // Rota protegida - Apenas usuários autenticados podem acessar
+  app.get('/livros/:id', verificarAutenticacao, livrosController.obterDetalhesLivro);
 
-  // POST: Atualizar livro
-  app.post('/livros/:id', livrosController.atualizarLivro);
+  // Rota protegida - Apenas usuários autenticados podem acessar
+  app.get('/livros/:id/editar', verificarAutenticacao, livrosController.exibirFormularioEdicaoLivro);
 
+  // Rota protegida - Apenas usuários autenticados podem acessar
+  app.post('/livros/:id', verificarAutenticacao, livrosController.atualizarLivro);
 
-  // DELETE /livros/{id}: Excluir um livro específico
-  app.delete('/livros/:id', livrosController.excluirLivro);
+  // Rota protegida - Apenas usuários autenticados podem acessar
+  app.delete('/livros/:id', verificarAutenticacao, livrosController.excluirLivro);
 };
-

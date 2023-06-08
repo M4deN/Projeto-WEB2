@@ -35,7 +35,7 @@
         <% } %>
       <% } %>
     </div>    
-    <button id="add-book-button" onclick="window.location.href='/adicionar'"><i class="fas fa-plus"></i> Adicionar Novo Livro</button>    
+    <button id="add-book-button" <% if (usuarioLogado) { %>onclick="window.location.href='/adicionar'"<% } %>><i class="fas fa-plus"></i> Adicionar Novo Livro</button>    
     <ul id="livros-lista">
       <% livros.forEach(function(livro) { %>
         <li>
@@ -44,14 +44,16 @@
           <p>Autor: <%= livro.autor %></p>
           <p>Ano de Publicação: <%= livro.anoPublicacao %></p>
           <p>Editora: <%= livro.editora %></p>
-          <button class="editar-button" data-livro-id="<%= livro._id %>">Editar</button>
-          <button class="excluir-button" data-livro-id="<%= livro._id %>">Excluir</button>
+          <% if (usuarioLogado) { %>
+            <button class="editar-button" data-livro-id="<%= livro._id %>">Editar</button>
+            <button class="excluir-button" data-livro-id="<%= livro._id %>">Excluir</button>
+          <% } %>
         </li>
       <% }) %>
     </ul>    
   </div>  
   <footer>
-    <p>© 2023 Projeto Web Ciclo 1. Todos os direitos reservados.</p>
+    <p>© 2023 Projeto Web Ciclo 2. Todos os direitos reservados.</p>
   </footer>  
   <script src="/javascripts/deleteLivro.js"></script>
   <script src="/javascripts/ordenacaoLivros.js"></script>

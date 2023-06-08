@@ -10,18 +10,17 @@
   <div class="container">
     <i class="fas fa-user-plus"></i>
     <h4>ALTERAR CADASTRO</h4>
-    <form action="/alterar" method="POST" id="cadastroForm">
+    <form action="/alterar/<%= user._id %>" method="POST" id="cadastroForm">
       <div class="form-group-cadastro">
-        <input type="email" name="email" id="email" placeholder="E-mail" required> 
-        <input type="password" name="senha" id="senha" placeholder="Senha" required>   
-        <input type="text" name="nome" id="nome" placeholder="Nome" required>   
+        <input type="email" name="email" id="email" placeholder="E-mail" value="<%= user.email %>" required> 
+        <input type="password" name="senha" id="senha" placeholder="Senha" value="<%= user.senha %>" required>   
+        <input type="text" name="nome" id="nome" placeholder="Nome" value="<%= user.nome %>" required>   
         <button type="submit">Alterar</button>
       </div>
-    </form>
+    </form>    
   </div>
   <footer>
     <p>© 2023 Projeto Web Ciclo 1. Todos os direitos reservados.</p>
   </footer>
-  <script src="alterar.js"></script>
 </body>
 </html>
