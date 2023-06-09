@@ -18,6 +18,13 @@ router.post('/', [
       return res.send(`<script>alert("${errorMessage}"); window.location.href = "/cadastro";</script>`);
     }
 
+    // Verificar se o email já está cadastrado
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      const errorMessage = 'O e-mail fornecido já está cadastrado';
+      return res.send(`<script>alert("${errorMessage}"); window.location.href = "/cadastro";</script>`);
+    }
+
     const newUser = new User({ email, senha, nome });
     await newUser.save();
 
@@ -31,5 +38,6 @@ router.post('/', [
     res.send(`<script>alert("${errorMessage}"); window.location.href = "/cadastro";</script>`);
   }
 });
+
 
 module.exports = router;

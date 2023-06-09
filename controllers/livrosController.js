@@ -1,5 +1,4 @@
 const Livro = require('../models/livro');
-const mongoose = require('mongoose');
 
 // lista de todos os livros
 const obterLivros = async (req, res) => {
@@ -75,7 +74,6 @@ const atualizarLivro = async (req, res) => {
     res.send(script);
   }
 };
-
 
 // Exclui um livro específico
 const excluirLivro = async (req, res) => {

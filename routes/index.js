@@ -8,10 +8,9 @@ const session = require('express-session');
 const loadData = require("../models/carga");
 const crypto = require('crypto');
 const Livro = require("../models/livro");
-const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
-const PDFDocument = require('pdfkit');
-const fetch = require('node-fetch');
+const gerarRelatorio = require("../public/javascripts/gerarPdf");
+
 
 module.exports = (app) => {
   
@@ -55,11 +54,11 @@ module.exports = (app) => {
       await loadData();
       const successMessage = 'Carga automática de dados concluída com sucesso!';
       console.log(successMessage);
-      res.send(`<script>alert("${successMessage}"); window.location.href = "/";</script>`);
+      res.send(`<script>alert("${successMessage}"); window.location.href = "/livros";</script>`);
     } catch (error) {
       console.error('Erro ao realizar carga automática de dados:', error);
       const errorMessage = 'Erro ao realizar carga automática de dados';
-      res.send(`<script>alert("${errorMessage}"); window.location.href = "/";</script>`);
+      res.send(`<script>alert("${errorMessage}"); window.location.href = "/livros";</script>`);
     }
   });
 
@@ -187,7 +186,6 @@ app.post('/alterar/:id', async (req, res) => {
 
   //Deletar Usuario
   app.get('/excluir', (req, res) => {
-    // Verificar se há um usuário na sessão
     if (req.session.user) {
       const user = req.session.user;
       // Excluir o usuário do banco de dados
@@ -251,80 +249,22 @@ app.post('/alterar/:id', async (req, res) => {
     }
   });  
 
-  async function gerarRelatorio() {
-    const countByYear = await Livro.aggregate([
-      {
-        $group: {
-          _id: "$anoPublicacao",
-          count: { $sum: 1 }
-        }
-      }
-    ]);
-  
-    const labels = countByYear.map(yearData => yearData._id);
-    const data = countByYear.map(yearData => yearData.count);
-  
-    const canvas = createCanvas(800, 600);
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = 'black';
-  
-    const barWidth = canvas.width / data.length;
-    const maxBarHeight = canvas.height - 100;
-    const maxCount = Math.max(...data);
-    
-    for (let i = 0; i < data.length; i++) {
-      const barHeight = (data[i] / maxCount) * maxBarHeight;
-      const x = i * barWidth + 50;
-      const y = canvas.height - barHeight - 50;
-  
-      ctx.fillRect(x, y, barWidth - 10, barHeight);
-  
-      ctx.font = '20px Arial';
-      ctx.fillText(data[i].toString(), x, y - 10);
-  
-      ctx.font = '16px Arial';
-      ctx.fillText(labels[i].toString(), x, canvas.height - 30);
-    }
-  
-    const imagePath = path.join(__dirname, '../public/reports/chart.png');
-    const stream = fs.createWriteStream(imagePath);
-    await new Promise((resolve, reject) => {
-      stream.on('finish', resolve);
-      stream.on('error', reject);
-      canvas.createPNGStream().pipe(stream);
-    });
-  
-    const pdfPath = path.join(__dirname, '../public/reports/livros.pdf');
-    const pdfDoc = new PDFDocument();
-  
-    const writeStream = fs.createWriteStream(pdfPath);
-    pdfDoc.pipe(writeStream);
-  
-    //pdfDoc.font('Helvetica-Bold').fontSize(24).fillColor('black').text('Análise de Livros', 50, 50);
-    pdfDoc.font('Helvetica-Bold').fontSize(24).fillColor('black').text('TOTAL DE LIVROS POR ANO', 20, 20);
-    pdfDoc.image(imagePath, 50, 100, { width: 500 });
-  
-    pdfDoc.end();
-    await new Promise((resolve, reject) => {
-      writeStream.on('finish', resolve);
-      writeStream.on('error', reject);
-    });
-  
-    return pdfPath;
-  }
-  
-  app.get('/pdf', verificarAutenticacao, async (req, res) => {
+  app.get('/pdf', async (req, res) => {
     try {
       const pdfPath = await gerarRelatorio();
-      const pdfStream = fs.createReadStream(pdfPath);
-      res.setHeader('Content-Type', 'application/pdf');
-      res.setHeader('Content-Disposition', 'inline; filename=grafico.pdf'); // Usando a opção "inline" para abrir o PDF em uma nova página
-      pdfStream.pipe(res);
+      const fileName = 'relatorio.pdf';
+  
+      res.set({
+        'Content-Type': 'application/pdf',
+        'Content-Disposition': `inline; filename="${fileName}"`,
+      });
+  
+      res.sendFile(path.resolve(pdfPath));
     } catch (error) {
+      const errorMessage = 'Ocorreu um erro ao gerar o relatório em PDF.';
+      const errorMessageScript = `<script>alert("${errorMessage}"); window.location.href = "/livros";</script>`;
       console.error('Erro ao gerar o relatório em PDF:', error);
-      const errorMessage = 'Erro ao gerar o relatório em PDF';
-      const script = `<script>alert("${errorMessage}"); window.location.href = "/perfil";</script>`;
-      res.status(500).send(script);
+      res.status(500).send(errorMessageScript);
     }
   });
      
