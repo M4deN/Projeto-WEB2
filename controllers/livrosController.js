@@ -1,5 +1,5 @@
 const Livro = require('../models/livro');
-
+const mongoose = require('mongoose');
 
 // lista de todos os livros
 const obterLivros = async (req, res) => {
@@ -34,6 +34,10 @@ const adicionarLivro = async (req, res) => {
 const obterDetalhesLivro = async (req, res) => {
   try {
     const livroId = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(livroId)) {
+      return res.status(400).send('ID de livro inválido');
+    }
+
     const livro = await Livro.findById(livroId).exec();
     console.log('entrou aqui');
     if (!livro) {

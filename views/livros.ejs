@@ -34,8 +34,10 @@
           <a href="/livros?pagina=<%= parseInt(pagina) + 1 %>">Próxima</a>
         <% } %>
       <% } %>
-    </div>    
-    <button id="add-book-button" <% if (usuarioLogado) { %>onclick="window.location.href='/adicionar'"<% } %>><i class="fas fa-plus"></i> Adicionar Novo Livro</button>    
+    </div> <% if (usuarioLogado) { %>   
+    <button id="add-book-button" onclick="window.location.href='/adicionar'"><i class="fas fa-plus"></i> Adicionar Novo Livro</button>
+    <button id="export-pdf-button"><i class="fas fa-download"></i>PDF</button> 
+    <% } %>
     <ul id="livros-lista">
       <% livros.forEach(function(livro) { %>
         <li>
@@ -57,5 +59,10 @@
   </footer>  
   <script src="/javascripts/deleteLivro.js"></script>
   <script src="/javascripts/ordenacaoLivros.js"></script>
+  <script>const exportPDFButton = document.getElementById('export-pdf-button');
+    exportPDFButton.addEventListener('click', () => {
+      window.open('/pdf', '_blank');
+    });
+    </script>
 </body>
 </html>

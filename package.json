@@ -6,6 +6,7 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "canvas": "^2.11.2",
     "cookie-parser": "~1.4.4",
     "cypress": "^9.6.0",
     "debug": "~2.6.9",
@@ -14,9 +15,12 @@
     "express": "~4.16.1",
     "express-session": "^1.17.3",
     "express-validator": "^7.0.1",
+    "fs": "^0.0.1-security",
     "http-errors": "~1.6.3",
     "mongoose": "^7.2.2",
     "nodemailer": "^6.9.2",
+    "pdfkit": "^0.13.0",
+    "puppeteer": "^20.5.0",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.7.5",
     "uuid": "^9.0.0"
