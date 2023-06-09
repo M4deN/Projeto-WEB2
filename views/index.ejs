@@ -34,6 +34,7 @@
   </header>  
   <div class="container">
     <h3><%= conteudo %></h3>    
+    <% if (!user) { %>
     <div class="login-form">
       <form action="/" method="post">
         <input type="email" id="email" placeholder="E-mail" name="email" required>
@@ -41,6 +42,7 @@
         <button type="submit">Entrar</button>
       </form>
     </div>  
+    <% } %>
   </div>
   <footer>
     <p>© 2023 Projeto Web Ciclo 1. Todos os direitos reservados.</p>

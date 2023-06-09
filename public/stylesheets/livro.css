@@ -188,8 +188,8 @@ body {
   }
   
   .pagination a.active {
-    background-color: #4CAF50;
-    color: white;
+    background-color: lime;
+    color: black;
   }
   
   .pagination a:hover:not(.active) {

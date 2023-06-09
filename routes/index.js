@@ -37,8 +37,7 @@ module.exports = (app) => {
 
   // Middleware para verificar se o usuário está autenticado
   const verificarAutenticacao = (req, res, next) => {
-    // Verificar se há um usuário autenticado na sessão ou no token de autenticação
-  
+    // Verificar se há um usuário autenticado na sessão ou no token de autenticação  
     if (req.session.user) {
       // O usuário está autenticado, continue para a próxima rota
       next();
@@ -70,7 +69,6 @@ module.exports = (app) => {
       const mensagem = `Bem-vindo, ${nomeUsuario}!`;
       res.send(`<script>alert("${mensagem}"); window.location.href = "/";</script>`);
     } else {
-      // Nenhum usuário ou admin está logado
       const mensagem = 'Você precisa fazer login';
       res.send(`<script>alert("${mensagem}"); window.location.href = "/login";</script>`);
     }
@@ -89,6 +87,8 @@ module.exports = (app) => {
     });
   });
   
+  // middleware para realizar o processo de login na página index
+  app.use('/', loginRouter);
   // Rota da página inicial
   app.get('/', (req, res) => {
     const tecnologia = fs.readFileSync('./conteudo/index.txt', 'utf8');
@@ -98,19 +98,19 @@ module.exports = (app) => {
   // Rota da página de descrição do projeto
   app.get('/descricao', (req, res) => {
     const tecnologia = fs.readFileSync('./conteudo/descricao.txt', 'utf8');
-    res.render('descricao', { conteudo: tecnologia });
+    res.render('descricao', { conteudo: tecnologia, user: req.session.user });
   });
 
   // Rota da página de tecnologias utilizadas
   app.get('/tecnologia', (req, res) => {
     const tecnologia = fs.readFileSync('./conteudo/tecnologia.txt', 'utf8');
-    res.render('tecnologia', { conteudo: tecnologia });
+    res.render('tecnologia', { conteudo: tecnologia, user: req.session.user });
   });
 
   // Rota da página de desenvolvedores
   app.get('/desenvolvedor', (req, res) => {
     const desenvolvedor = fs.readFileSync('./conteudo/desenvolvedor.txt', 'utf8');
-    res.render('Desenvolvedor', { conteudo: desenvolvedor });
+    res.render('Desenvolvedor', { conteudo: desenvolvedor, user: req.session.user });
   });
 
   app.use('/cadastro', cadastroRouter);
@@ -149,7 +149,6 @@ app.post('/alterar/:id', async (req, res) => {
       const { email, senha, nome } = req.body;
       const user = req.session.user;
 
-      // Verificar se o ID do usuário na sessão corresponde ao ID fornecido na rota
       if (user._id.toString() !== userId) {
         const errorMessage = 'Acesso não autorizado';
         res.send(`<script>alert("${errorMessage}"); window.location.href = "/login";</script>`);
@@ -161,14 +160,12 @@ app.post('/alterar/:id', async (req, res) => {
         existingUser.email = email;
         existingUser.senha = senha;
         existingUser.nome = nome;
-        // Salvar as alterações no banco de dados
         await existingUser.save();
         // Atualizar o usuário na sessão
         req.session.user = existingUser;
         const successMessage = 'Dados atualizados com sucesso';
         res.send(`<script>alert("${successMessage}"); window.location.href = "/";</script>`);
       } else {
-        // Usuário não encontrado
         const errorMessage = 'Usuário não encontrado';
         res.send(`<script>alert("${errorMessage}"); window.location.href = "/login";</script>`);
       }

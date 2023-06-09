@@ -6,6 +6,17 @@
   <title>Tecnologias</title>
 </head>
 <body>
+  <% if (user) { %>
+    <div class="logout-button">
+      <a href="/logout" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>  
+    <div class="alter-button">
+      <a href="/alterar"><i class="fas fa-user-edit"></i> Alterar Dados</a>
+    </div>
+    <div class="del-button">
+      <a href="/excluir"><i class="fas fa-trash-alt"></i> Excluir Conta</a>
+    </div>
+  <% } %>  
   <h1>TECNOLOGIAS UTILIZADAS</h1>
   <header>
     <nav>
@@ -17,6 +28,7 @@
         <li><i class="fas fa-users"></i> <a href="/desenvolvedor">Desenvolvedores</a></li>
         <li><i class="fas fa-comment-dots"></i> <a href="/contato">Contato</a></li>
         <li><i class="fas fa-sign-in-alt"></i> <a href="/login">Login</a></li>
+        <li><i class="fas fa-book"></i> <a href="/livros">Livro</a></li> 
       </ul>      
     </nav>
   </header>  
@@ -26,6 +38,11 @@
   <footer>
     <p>© 2023 Projeto Web Ciclo 1. Todos os direitos reservados.</p>
   </footer>
-  <a href="/login" class="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  <% if (typeof message !== 'undefined' && message) { %>
+    <script>
+      alert('<%= message %>'); 
+      window.location.href = "/index";
+    </script>
+  <% } %>
 </body>
 </html>
