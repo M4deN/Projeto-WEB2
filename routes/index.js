@@ -6,27 +6,27 @@ const loginRouter = require("../public/javascripts/login");
 const User = require("../models/user");
 const session = require('express-session');
 const loadData = require("../models/carga");
-const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
 const Livro = require("../models/livro");
 const path = require('path');
 const gerarRelatorio = require("../public/javascripts/gerarPdf");
+const chaveSecreta = 'token gerado pelo jwt';
 
 
 module.exports = (app) => {
   
-  const generateRandomKey = () => {
-    return crypto.randomBytes(32).toString('hex');
+  const gerarToken = (user, chaveSecreta) => {
+    return jwt.sign(user, chaveSecreta);
   };
+  
+const tokenGerado = gerarToken({ usuario: 'Alecio' }, chaveSecreta);
+console.log('Token gerado:', tokenGerado);
 
-  const chaveSecreta = generateRandomKey();
-  console.log("chave gerada: ", chaveSecreta);
-
-  // Configuracao uso de sessão
-  app.use(session({
-    secret: chaveSecreta,
-    resave: false,
-    saveUninitialized: true,
-  }));
+app.use(session({
+  secret: chaveSecreta,
+  resave: false,
+  saveUninitialized: true,
+}));
 
   // Rota da página login
   app.use('/login', loginRouter);
@@ -45,7 +45,18 @@ module.exports = (app) => {
       // O usuário não está autenticado, redirecione para a página de login ou retorne um erro
       res.redirect('/login');
     }
-  };
+  };   
+
+  // Rota para enviar o token para o cliente e armazená-lo
+  app.get('/armazenar-token',verificarAutenticacao, (req, res) => {
+    // Obtém o token gerado
+    const tokenGerado = gerarToken({ usuario: 'Alecio' }, chaveSecreta);
+    console.log('Token gerado:', tokenGerado);
+    
+    // Exibe o token em um alerta JavaScript
+    const alertScript = `<script>alert("Token gerado: ${tokenGerado}"); window.location.href = "/livros";</script>`;
+    res.send(alertScript);
+  });
 
   // Defina a rota de carga
   app.get('/carga', async (req, res) => {
@@ -73,7 +84,7 @@ module.exports = (app) => {
       res.send(`<script>alert("${mensagem}"); window.location.href = "/login";</script>`);
     }
   }); 
-
+     
   //Rota para deslogar o usuário
   app.get('/logout', (req, res) => {
     // Limpar os dados da sessão
