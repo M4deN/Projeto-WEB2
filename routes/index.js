@@ -11,7 +11,7 @@ const Livro = require("../models/livro");
 const path = require('path');
 const gerarRelatorio = require("../public/javascripts/gerarPdf");
 const chaveSecreta = 'token gerado pelo jwt';
-
+const marked = require('marked');
 
 module.exports = (app) => {
   
@@ -102,9 +102,16 @@ app.use(session({
   app.use('/', loginRouter);
   // Rota da página inicial
   app.get('/', (req, res) => {
+    let nomeUsuario = '';
+    
+    if (req.session.user) {
+      // Usuário está logado
+      nomeUsuario = req.session.user.nome;
+    }    
     const tecnologia = fs.readFileSync('./conteudo/index.txt', 'utf8');
-    res.render('index', { conteudo: tecnologia, user: req.session.user });
+    res.render('index', { conteudo: tecnologia, user: req.session.user, nomeUsuario });
   });
+  
 
   // Rota da página de descrição do projeto
   app.get('/descricao', (req, res) => {
@@ -121,7 +128,8 @@ app.use(session({
   // Rota da página de desenvolvedores
   app.get('/desenvolvedor', (req, res) => {
     const desenvolvedor = fs.readFileSync('./conteudo/desenvolvedor.txt', 'utf8');
-    res.render('Desenvolvedor', { conteudo: desenvolvedor, user: req.session.user });
+    const conteudoHTML = marked(desenvolvedor);
+    res.render('Desenvolvedor', { conteudo: conteudoHTML, user: req.session.user });
   });
 
   app.use('/cadastro', cadastroRouter);

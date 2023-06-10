@@ -148,7 +148,7 @@ li{
   position: sticky;
   margin-right: auto;
   margin-top: auto;
-  margin-left: -60px;
+  margin-left: -5%;
 }
 
 .logout-button a,
@@ -160,9 +160,15 @@ li{
   color: white;
   text-decoration: none;
   transition: color 0.3s ease;
-  margin-bottom: 10px;
+  margin-bottom: 10%;
   margin-top: 5px;
   margin-right: 10px;
+}
+
+.logout-button i,
+.alter-button i,
+.del-button i {
+  margin-right: 5px; 
 }
 
 .logout-button:hover a,
@@ -398,4 +404,13 @@ footer{
 }
 footer p {
   color: lime;
+}
+.nome-usuario {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: sticky;
+  margin-right: auto;
+  margin-top: auto;
+  margin-left: 90%;
 }

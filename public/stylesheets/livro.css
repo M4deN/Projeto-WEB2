@@ -124,8 +124,7 @@ body {
   
   #add-book-button:hover {
     background-color: lime;
-  }
-  
+  }  
 
   input[type="text"],
   input[type="number"] {
@@ -169,8 +168,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 5%;
-  }
-  
+  }  
   
   .order-fields select {
     margin-right: 5px;

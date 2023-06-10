@@ -5,10 +5,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <title>Página Inicial</title>
 </head>
+<span class="nome-usuario">Bem Vindo(a): <%= nomeUsuario %></span>
 <body>
   <% if (user) { %>
     <div class="logout-button">
-      <a href="/logout" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      <a href="/logout" onclick="logout()"><i class="fas fa-sign-out-alt"> </i> Logout</a>
     </div>  
     <div class="alter-button">
       <a href="/alterar"><i class="fas fa-user-edit"></i> Alterar Dados</a>
