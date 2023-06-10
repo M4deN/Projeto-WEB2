@@ -141,7 +141,8 @@ li{
 }
 .logout-button,
 .alter-button,
-.del-button {
+.del-button,
+.vel-button {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -153,7 +154,8 @@ li{
 
 .logout-button a,
 .alter-button a,
-.del-button a {
+.del-button a,
+.vel-button a{
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -167,13 +169,15 @@ li{
 
 .logout-button i,
 .alter-button i,
-.del-button i {
+.del-button i,
+.vel-button i {
   margin-right: 5px; 
 }
 
 .logout-button:hover a,
 .alter-button:hover a,
-.del-button:hover a {
+.del-button:hover a,
+.vel-button:hover a {
   color: lime;
 }
 

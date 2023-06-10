@@ -10,7 +10,7 @@ const jwt = require('jsonwebtoken');
 const Livro = require("../models/livro");
 const path = require('path');
 const gerarRelatorio = require("../public/javascripts/gerarPdf");
-const chaveSecreta = 'token gerado pelo jwt';
+const chaveSecreta ='token';
 
 module.exports = (app) => {
   
