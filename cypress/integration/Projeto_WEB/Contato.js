@@ -10,8 +10,8 @@ describe('Página de Contato', () => {
     });
   
     it('Deve enviar o formulário de contato com sucesso', () => {
-      cy.get('input[name="nome"]').type('John Doe');
-      cy.get('input[name="email"]').type('john.doe@example.com');
+      cy.get('input[name="nome"]').type('Alecio L. Medeiros');
+      cy.get('input[name="email"]').type('alecio.medeiros@gmail.com');
       cy.get('input[name="assunto"]').type('Assunto de teste');
       cy.get('textarea[name="mensagem"]').type('Mensagem de teste');
       cy.get('button[type="submit"]').click();

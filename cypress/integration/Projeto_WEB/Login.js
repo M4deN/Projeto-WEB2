@@ -10,18 +10,18 @@ describe('Página de Login', () => {
     });
   
     it('Deve redirecionar para a página inicial ao fazer login com credenciais corretas', () => {
-      cy.get('input[name="username1"]').type('teste@email.com');
-      cy.get('input[name="password2"]').type('1234');
+      cy.get('[type="text"]').type('charlie_brandbury@outlook.com');
+      cy.get('[type="password"]').type('123456');
       cy.get('button[type="submit"]').click();
       cy.url().should('include', '/');
     });
   
     it('Deve exibir uma mensagem de erro ao fazer login com credenciais incorretas', () => {
-      cy.get('input[name="username1"]').type('usuario@invalido.com');
-      cy.get('input[name="password2"]').type('senhaerrada');
+      cy.get('[type="text"]').type('usuario@invalido.com');
+      cy.get('[type="password"]').type('senhaerrada');
       cy.get('button[type="submit"]').click();
       cy.on('window:alert', (alertText) => {
-        expect(alertText).to.equal('Credenciais inválidas. Por favor, tente novamente.');
+        expect(alertText).to.equal('Usuário não encontrado !!');
       });
       cy.url().should('include', '/login');
     });

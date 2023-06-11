@@ -35,7 +35,7 @@ router.post('/', [
         res.send(`<script>alert("${errorMessage}"); window.location.href = "/login";</script>`);
       }
     } else {
-      const errorMessage = 'Usuário não encontrado';
+      const errorMessage = 'Usuário não encontrado !!';
       res.send(`<script>alert("${errorMessage}"); window.location.href = "/login";</script>`);
     }
   } catch (error) {

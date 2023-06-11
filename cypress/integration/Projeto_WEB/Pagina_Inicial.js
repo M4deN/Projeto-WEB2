@@ -22,8 +22,8 @@ describe('Página Inicial', () => {
   
     it('Deve exibir o formulário de login corretamente', () => {
       cy.get('.login-form').within(() => {
-        cy.get('input[name="email1"]').should('exist');
-        cy.get('input[name="senha1"]').should('exist');
+        cy.get('input[name="email"]').should('exist');
+        cy.get('input[name="senha"]').should('exist');
         cy.get('button[type="submit"]').should('exist');
       });
     });
