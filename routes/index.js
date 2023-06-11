@@ -18,7 +18,7 @@ module.exports = (app) => {
     return jwt.sign(user, chaveSecreta);
   };
   
-const tokenGerado = gerarToken({ usuario: 'Alecio' }, chaveSecreta);
+const tokenGerado = jwt.sign({ usuario: 'Alecio' }, chaveSecreta, { expiresIn: '1m' });
 console.log('Token gerado:', tokenGerado);
 
 app.use(session({
@@ -46,7 +46,7 @@ app.use(session({
     }
   };   
 
-  // Rota para enviar o token para o cliente e armazená-lo
+  // Rota para enviar o token para o cliente e armazená-lo, visualiza o token em um alert
   app.get('/armazenar-token',verificarAutenticacao, (req, res) => {
     // Obtém o token gerado
     const tokenGerado = gerarToken({ usuario: 'Alecio' }, chaveSecreta);
@@ -219,7 +219,7 @@ app.post('/alterar/:id', async (req, res) => {
         .catch(error => {
           console.error('Erro ao excluir usuário no MongoDB:', error);
           const errorMessage = 'Erro ao excluir conta do usuário';
-          res.status(500).send(`<script>alert("${errorMessage}"); window.location.href = "/perfil";</script>`);
+          res.status(500).send(`<script>alert("${errorMessage}"); window.location.href = "/login";</script>`);
         });
     } else {
       res.redirect('/login');
@@ -258,8 +258,8 @@ app.post('/alterar/:id', async (req, res) => {
   
       res.render('livros', { livros, totalPaginas, pagina: parseInt(pagina), usuarioLogado });
     } catch (error) {
-      console.error(error);
-      res.status(500).send('Erro ao obter a lista de livros');
+      const errorMessage = 'Erro ao obter a lista de livros';
+      res.send(`<script>alert("${errorMessage}"); window.location.href = "/;</script>`);
     }
   });  
 

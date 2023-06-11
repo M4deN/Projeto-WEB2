@@ -410,11 +410,11 @@ footer p {
   color: lime;
 }
 .nome-usuario {
-  display: flex;
+  display: absolute;
   flex-direction: row;
   align-items: flex-start;
   position: sticky;
   margin-right: auto;
   margin-top: auto;
-  margin-left: 90%;
+  margin-left: 87%;
 }

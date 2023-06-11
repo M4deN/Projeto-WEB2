@@ -6,7 +6,7 @@ body {
     color: white;
   }  
   .container {
-    max-width: 800px;
+    max-width: 50%;
     margin: 0 auto;
     padding: 20px;
   }  
@@ -31,31 +31,48 @@ body {
     color: white;
   }  
   /* Estilos para a lista de livros */
-#livros-lista {
+  #livros-lista {
     border-top: 1px solid #ccc;
-    margin-top: 20px;
-    padding-top: 20px;
+    margin-top: 10px;
+    padding-top: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
   
   #livros-lista li {
-    width: calc(25% - 10px); 
+    width: calc(25% - 10px);
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
   }
   
   #livros-lista li:nth-child(4n) {
-    margin-right: 0; 
+    margin-right: 0;
   }
   
   #livros-lista img {
-    width: 100%; 
-    height: auto; 
-    object-fit: cover; 
-    border-radius: 5px; 
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 1px;
+  }
+  
+  .livro-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .livro-imagem {
+    margin-right: 10px;
+  }
+  
+  .livro-titulo,
+  .livro-autor,
+  .livro-ano,
+  .livro-editora {
+    margin-bottom: 5px;
   }
   
   /* Estilos para os botões */
@@ -107,20 +124,7 @@ body {
   }
   footer p {
     color: lime;
-  }
-  #add-book-button {
-    background-color: white;
-    color: black;
-    padding: 10px 10px;
-    border: 1px solid white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: -100px;
-    font-weight: bold;
-    margin-left: 77%;
-    width: 22%;
-  }
+  } 
   
   #add-book-button:hover {
     background-color: lime;
@@ -138,7 +142,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: 100px;
-    border: 1px solid #ccc;
+    border: 1px solid white;
     padding: 45px;
     border-radius: 5px;
     margin-top: 10%;
@@ -157,7 +161,9 @@ body {
     transition: background-color 0.3s;
     margin-top: 2%;
   }
-
+  #add-book-button {
+    margin-right: 70%;
+  }
   button:hover {
     background-color: lime;
   }
@@ -168,7 +174,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 5%;
-  }  
+  } 
   
   .order-fields select {
     margin-right: 5px;
@@ -184,6 +190,8 @@ body {
     text-decoration: none;
     border-radius: 4px;
   }
+
+  
   
   .pagination a.active {
     background-color: lime;
@@ -193,7 +201,29 @@ body {
   .pagination a:hover:not(.active) {
     background-color: lime;
   }
-.pagination {
-  display: inline-block;
-  vertical-align: middle;
+  .pagination {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.search-field {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+}
+
+#search-input {
+  width: 200px; 
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#search-button {
+  padding: 8px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
 }

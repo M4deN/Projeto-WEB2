@@ -9,6 +9,7 @@
 <body>
   <div class="container">
     <h1>CATALOGO DE LIVROS <i class="fas fa-book"></i></h1>    
+    <!-- Ordenação -->
     <div class="order-fields">
       <label for="order-author">Ordenar por Autor:</label>
       <select id="order-author">
@@ -20,7 +21,12 @@
         <option value="asc">Mais antigo primeiro</option>
         <option value="desc">Mais recente primeiro</option>
       </select>
-    </div>    
+    </div>
+    <!-- Campo de busca -->
+    <div class="search-field">
+      <input type="text" id="search-input" placeholder="Buscar...">
+      <button id="search-button"><i class="fas fa-search"></i></button>
+    </div>   
     <!-- Exibir a paginação -->
     <div class="pagination">
       <% if (totalPaginas > 1) { %>
@@ -59,6 +65,7 @@
   </footer>  
   <script src="/javascripts/deleteLivro.js"></script>
   <script src="/javascripts/ordenacaoLivros.js"></script>
+  <script src="/javascripts/busca.js"></script>
   <script>const exportPDFButton = document.getElementById('export-pdf-button');
     exportPDFButton.addEventListener('click', () => {
       window.open('/pdf', '_blank');
