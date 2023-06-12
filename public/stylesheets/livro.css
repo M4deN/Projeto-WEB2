@@ -1,223 +1,231 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    color: white;
-  }  
-  .container {
-    max-width: 50%;
-    margin: 0 auto;
-    padding: 20px;
-  }  
-  h1 {
-    margin-top: 5%;
-    text-align: center;
-    color: white;
-  }  
-  ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }  
-  li {
-    margin: 10px;
-    text-align: center;
-  }  
-  p {
-    margin: 0;
-    color: white;
-  }  
-  /* Estilos para a lista de livros */
-  #livros-lista {
-    border-top: 1px solid #ccc;
-    margin-top: 10px;
-    padding-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  #livros-lista li {
-    width: calc(25% - 10px);
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-  }
-  
-  #livros-lista li:nth-child(4n) {
-    margin-right: 0;
-  }
-  
-  #livros-lista img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 1px;
-  }
-  
-  .livro-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .livro-imagem {
-    margin-right: 10px;
-  }
-  
-  .livro-titulo,
-  .livro-autor,
-  .livro-ano,
-  .livro-editora {
-    margin-bottom: 5px;
-  }
-  
-  /* Estilos para os botões */
-  #livros-lista button:first-child {
-    margin-top: 0; 
-  }
-  
-  #livros-lista button:hover {
-    background-color: lime;
-  }
-  #livros-lista button {
-    background-color: white;
-    color: white;
-    padding: 10px 20px;
-    border: 1px solid white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 10px; 
-  }
-  /* Estilos para os detalhes do livro */
-  #detalhes-livro {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid #ccc;
-  }  
-  #detalhes-livro p {
-    margin-bottom: 5px;
-  }  
-  #detalhes-livro button {
-    background-color: #333;
-    color: #fff;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-  }  
-  #livros-lista button {
-    color: black;
-    font-weight: bold;
-  }
-  footer {
-    margin-top: auto;
-    background-color: black;
-    bottom: 0;
-    width: 100%;
-    height: 40px;
-    text-align: center;
-    position: fixed;
-  }
-  footer p {
-    color: lime;
-  } 
-  
-  #add-book-button:hover {
-    background-color: lime;
-  }  
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  height: auto;
+  width: auto;
+  margin: auto;
+  margin-top:auto;
+}  
+.container {
+  max-width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+}  
+h1 {
+  margin-top: 5%;
+  text-align: center;
+  color: white;
+}  
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}  
+li {
+  margin: 10px;
+  text-align: center;
+}  
+p {
+  margin: 0;
+  color: white;
+}  
+/* Estilos para a lista de livros */
+#livros-lista {
+  border-top: 1px solid white;
+  margin-top: -25px;
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: static;
+}
 
-  input[type="text"],
-  input[type="number"] {
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 13px;
-  }
+#livros-lista li {
+  width: calc(25% - 10px);
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
 
-  form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 100px;
-    border: 1px solid white;
-    padding: 45px;
-    border-radius: 5px;
-    margin-top: 10%;
-    width: 100%;
-    max-width: 100%;  
-  }
+#livros-lista li:nth-child(4n) {
+  margin-right: 0;
+}
 
-  button {
-    background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border: 1px solid white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    margin-top: 2%;
-  }
-  #add-book-button {
-    margin-right: 70%;
-  }
-  button:hover {
-    background-color: lime;
-  }
-  .pagination {
-    margin-top: 5%;
-  }
-  .order-fields {
-    display: flex;
-    justify-content: center;
-    margin-top: 5%;
-  } 
-  
-  .order-fields select {
-    margin-right: 5px;
-    margin-left: 10px;
-  }
-  .pagination a {
-    display: inline-block;
-    padding: 8px 12px;
-    margin-right: 5px;
-    background-color: white;
-    font-weight: bold;
-    color:black;
-    text-decoration: none;
-    border-radius: 4px;
-  }
+#livros-lista img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 1px;
+}
 
-  
-  
-  .pagination a.active {
-    background-color: lime;
-    color: black;
-  }
-  
-  .pagination a:hover:not(.active) {
-    background-color: lime;
-  }
-  .pagination {
-    display: inline-block;
-    vertical-align: middle;
+.livro-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.livro-imagem {
+  margin-right: 10px;
+}
+
+.livro-titulo,
+.livro-autor,
+.livro-ano,
+.livro-editora {
+  margin-bottom: 5px;
+}
+
+/* Estilos para os botões */
+#livros-lista button:first-child {
+  margin-top: 0; 
+}
+
+#livros-lista button:hover {
+  background-color: lime;
+}
+#livros-lista button {
+  background-color: white;
+  color: white;
+  padding: 10px 20px;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px; 
+}
+/* Estilos para os detalhes do livro */
+#detalhes-livro {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+}  
+#detalhes-livro p {
+  margin-bottom: 5px;
+}  
+#detalhes-livro button {
+  background-color: black;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}  
+#livros-lista button {
+  color: black;
+  font-weight: bold;
+}
+footer {
+  margin-top: 5px;
+  position: fixed;
+  font-size: 16px;
+  padding: 5px;
+  background-color: black;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+
+footer p {
+  margin-top: 0.6%;
+  color: lime;
+}
+
+#add-book-button:hover {
+  background-color: lime;
+}  
+
+input[type="text"],
+input[type="number"] {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 13px;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  border: 1px solid white;
+  padding: 45px;
+  border-radius: 5px;
+  margin-top: 10%;
+  width: 100%;
+  max-width: 100%;  
+}
+
+button {
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-top: 2%;
+}
+#add-book-button {
+  margin-right: 70%;
+  position: static;
+}
+button:hover {
+  background-color: lime;
+}
+.pagination {
+  margin-top: 5%;
+}
+.order-fields {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+} 
+
+.order-fields select {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+.pagination a {
+  display: inline-block;
+  padding: 8px 12px;
+  margin-right: 5px;
+  background-color: white;
+  font-weight: bold;
+  color:black;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.pagination a.active {
+  background-color: lime;
+  color: black;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: lime;
+}
+.pagination {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .search-field {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   margin: 10px;
+  margin-left: 1%; 
 }
 
 #search-input {
   width: 200px; 
   padding: 8px;
   font-size: 14px;
-  border: 1px solid #ccc;
+  border: 1px solid white;
   border-radius: 4px;
 }
 
@@ -226,4 +234,30 @@ body {
   font-size: 14px;
   border: none;
   cursor: pointer;
+}
+#voltar-button {
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 1%;
+}
+.nome-usuario {
+  margin: 10px;
+  font-family: Arial, sans-serif;
+  top: 2%;
+  right: 0;
+  position: absolute;
+  margin-left: 81%;
+  right: 2%;
+  font-size: small;
+}
+
+#add-book-button,#export-pdf-button
+ {
+  display:flex;
+  position: relative;
+}
+
+#export-pdf-button {
+  top: -50px;
+  margin-left: 88%;
 }

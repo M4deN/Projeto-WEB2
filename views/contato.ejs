@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
+  <% if (user) { %>
+    <span class="nome-usuario"><i class="fas fa-user"></i> Bem Vindo(a): <%= nomeUsuario %></span><% } %> 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <i class="fas fa-envelope"></i>
-
 <h4>CONTATO</h4>
 <form action="/contato/enviar" method="post">
   <div class="form-group">

@@ -114,20 +114,35 @@ app.use(session({
 
   // Rota da página de descrição do projeto
   app.get('/descricao', (req, res) => {
+    let nomeUsuario = '';    
+    if (req.session.user) {
+      // Usuário está logado
+      nomeUsuario = req.session.user.nome;
+    }  
     const tecnologia = fs.readFileSync('./conteudo/descricao.txt', 'utf8');
-    res.render('descricao', { conteudo: tecnologia, user: req.session.user });
+    res.render('descricao', { conteudo: tecnologia, user: req.session.user, nomeUsuario  });
   });
 
   // Rota da página de tecnologias utilizadas
   app.get('/tecnologia', (req, res) => {
+    let nomeUsuario = '';    
+    if (req.session.user) {
+      // Usuário está logado
+      nomeUsuario = req.session.user.nome;
+    }  
     const tecnologia = fs.readFileSync('./conteudo/tecnologia.txt', 'utf8');
-    res.render('tecnologia', { conteudo: tecnologia, user: req.session.user });
+    res.render('tecnologia', { conteudo: tecnologia, user: req.session.user, nomeUsuario });
   });
 
   // Rota da página de desenvolvedores
   app.get('/desenvolvedor', (req, res) => {
+    let nomeUsuario = '';    
+    if (req.session.user) {
+      // Usuário está logado
+      nomeUsuario = req.session.user.nome;
+    }  
     const desenvolvedor = fs.readFileSync('./conteudo/desenvolvedor.txt', 'utf8');
-    res.render('Desenvolvedor', { conteudo: desenvolvedor, user: req.session.user });
+    res.render('Desenvolvedor', { conteudo: desenvolvedor, user: req.session.user, nomeUsuario });
   });
 
   app.use('/cadastro', cadastroRouter);
@@ -138,7 +153,12 @@ app.use(session({
 
   // Rota da página de contato
   app.get('/contato', (req, res) => {
-    res.render('contato');
+    let nomeUsuario = '';    
+    if (req.session.user) {
+      // Usuário está logado
+      nomeUsuario = req.session.user.nome;
+    }  
+    res.render('contato', { user: req.session.user, nomeUsuario });
   });
 
  // Rota para exibir o formulário de alteração do usuário
@@ -254,14 +274,17 @@ app.post('/alterar/:id', async (req, res) => {
       const livros = await query.exec();
   
       // Verificar se há um usuário na sessão
-      const usuarioLogado = req.session.user ? true : false;
-  
-      res.render('livros', { livros, totalPaginas, pagina: parseInt(pagina), usuarioLogado });
-    } catch (error) {
+      let nomeUsuario = '';
+        if (req.session.user) {
+          // Usuário está logado
+          nomeUsuario = req.session.user.nome;
+      }
+        res.render('livros', { livros, totalPaginas, pagina: parseInt(pagina), user: req.session.user, nomeUsuario });
+      } catch (error) {
       const errorMessage = 'Erro ao obter a lista de livros';
-      res.send(`<script>alert("${errorMessage}"); window.location.href = "/;</script>`);
-    }
-  });  
+        res.send(`<script>alert("${errorMessage}"); window.location.href = "/";</script>`);
+      }
+}); 
 
   app.get('/pdf', async (req, res) => {
     try {

@@ -1,14 +1,23 @@
 Nossa plataforma utilizara as seguintes tecnologias:
 
-- Node.js: um ambiente de execução de código JavaScript no servidor.
-- Express: um framework web para desenvolvimento de aplicações em Node.js.
+- Node.js: Ambiente de execução de código JavaScript no servidor.
+- Express: Framework web para desenvolvimento de aplicações em Node.js.
 - MongoDB: um banco de dados NoSQL orientado a documentos.
-- Sequelize: Ele simplifica o processo de lidar com o banco de dados, fornecendo uma abstração poderosa e uma sintaxe fácil de usar.
-- React: uma biblioteca JavaScript para construção de interfaces de usuário.
-- HTML: linguagem de marcação para estruturar o conteúdo das páginas web.
-- CSS: linguagem de estilo para definir a aparência visual das páginas web.
-- JavaScript: linguagem de programação para adicionar interatividade às páginas web.
-
+- AJAX Icons: uma biblioteca para personalizar interfaces de usuário.
+- HTML: Linguagem de marcação para estruturar o conteúdo das páginas web.
+- EJS: Linguagem de modelagem simples que permite a geração dinâmica de conteúdo HTML.
+- CSS: Linguagem de estilo para definir a aparência visual das páginas web.
+- JavaScript: Linguagem de programação para adicionar interatividade às páginas web.
+- NodeMailer: Biblioteca do Node.js que permite o envio de e-mails de forma fácil e eficiente. Ele fornece uma interface simples para enviar e-mails usando diferentes provedores de serviços de e-mail, como SMTP, SendGrid, Gmail, entre outros.
+- Nodemon: Ele monitora os arquivos do seu projeto e reinicia automaticamente o servidor sempre que um arquivo é modificado. 
+- Cypress: Ferramenta de teste de ponta a ponta (end-to-end) para aplicativos da web. Ele permite que você escreva testes automatizados para simular interações de usuário em um aplicativo da web e verificar se ele está funcionando corretamente.
+- DotEnv: Biblioteca do Node.js que permite carregar variáveis de ambiente de arquivos de configuração. Ela é comumente usada em aplicativos Node.js para separar configurações sensíveis, como chaves de API, senhas de banco de dados e outras informações confidenciais, do código fonte.
+- Express-Session: Biblioteca do Node.js que permite gerenciar sessões em aplicativos web construídos com o framework Express.
+- JWT: Biblioteca do Node.js que permite a geração e verificação de tokens de autenticação usando o padrão JSON Web Tokens (JWT). 
+- Mongoose: Biblioteca do Node.js que fornece uma interface simples e baseada em esquemas para interagir com bancos de dados MongoDB.
+- PDFKit: Biblioteca para geração de documentos em formato PDF usando JavaScript. Ela permite criar facilmente documentos PDF dinâmicos e personalizados utilizando uma sintaxe familiar e intuitiva.
+- SweetAlert: Biblioteca JavaScript para exibir belas e personalizadas caixas de diálogo modais, como alertas, confirmações e prompts, para aplicativos web.
+- Puppeteer: é uma biblioteca de controle de navegador desenvolvida pelo Google que permite automatizar interações com o navegador Chrome por meio de código JavaScript. 
 Essas tecnologias combinadas oferecem uma base sólida para o desenvolvimento de aplicações web modernas e escaláveis.
 
 

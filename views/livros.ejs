@@ -7,6 +7,11 @@
   <link rel="stylesheet" href="/stylesheets/livro.css">
 </head>
 <body>
+  <button id="voltar-button" onclick="window.history.back()"><i class="fas fa-arrow-left"></i> Voltar</button>
+
+  <% if (user) { %>
+    <span class="nome-usuario"><i class="fas fa-user"></i> Bem Vindo(a): <%= nomeUsuario %></span>
+  <% } %>
   <div class="container">
     <h1>CATALOGO DE LIVROS <i class="fas fa-book"></i></h1>    
     <!-- Ordenação -->
@@ -40,7 +45,7 @@
           <a href="/livros?pagina=<%= parseInt(pagina) + 1 %>">Próxima</a>
         <% } %>
       <% } %>
-    </div> <% if (usuarioLogado) { %>   
+    </div> <% if (user) { %>   
     <button id="add-book-button" onclick="window.location.href='/adicionar'"><i class="fas fa-plus"></i> Adicionar Novo Livro</button>
     <button id="export-pdf-button"><i class="fas fa-download"></i>PDF</button> 
     <% } %>
@@ -52,7 +57,7 @@
           <p>Autor: <%= livro.autor %></p>
           <p>Ano de Publicação: <%= livro.anoPublicacao %></p>
           <p>Editora: <%= livro.editora %></p>
-          <% if (usuarioLogado) { %>
+          <% if (user) { %>
             <button class="editar-button" data-livro-id="<%= livro._id %>">Editar</button>
             <button class="excluir-button" data-livro-id="<%= livro._id %>">Excluir</button>
           <% } %>

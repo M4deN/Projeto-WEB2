@@ -7,6 +7,7 @@
 </head>
 <body>
   <% if (user) { %>
+    <span class="nome-usuario"><i class="fas fa-user"></i> Bem Vindo(a): <%= nomeUsuario %></span>
     <div class="logout-button">
       <a href="/logout" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>  
@@ -17,6 +18,9 @@
       <a href="/excluir"><i class="fas fa-trash-alt"></i> Excluir Conta</a>
     </div>
   <% } %>  
+  <div class="vel-button">
+    <a href="/verificar-login"><i class="fas fa-check-circle"></i>Verificar Usuário</a>
+  </div>
   <h1>DESENVOLVEDOR</h1>
   <header>
     <nav>
@@ -33,7 +37,7 @@
     </nav>
   </header>
   <div class="container">
-    <h3 class="centered-content"><%= conteudo %></h3>         
+    <p><%= conteudo %></p>         
  </div>
   <footer>
     <p>© 2023 Projeto Web Ciclo 1. Todos os direitos reservados.</p>
