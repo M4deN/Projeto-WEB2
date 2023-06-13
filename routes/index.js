@@ -95,7 +95,7 @@ app.use(session({
     });
   });
   
-  // middleware para realizar o processo de login na página index
+  //Middleware para realizar o processo de login na página index
   app.use('/', loginRouter);
   // Rota da página inicial
   app.get('/', (req, res) => {

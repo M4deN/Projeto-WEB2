@@ -23,7 +23,6 @@
     "pdfkit": "^0.13.0",
     "puppeteer": "^20.5.0",
     "sweetalert": "^2.1.2",
-    "sweetalert2": "^11.7.5",
     "uuid": "^9.0.0"
   }
 }
