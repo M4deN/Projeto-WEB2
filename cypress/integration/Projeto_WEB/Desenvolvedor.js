@@ -8,7 +8,7 @@ describe('Página de Desenvolvedor', () => {
     });
   
     it('Deve exibir as informações do desenvolvedor corretamente', () => {
-      const expectedText = 'Alecio Leandro de Medeiros Ocupação: Estudante de Engenharia de Software Empresa: Roche La Hoffman Ferramentas: JavaScript, Cypress, Selenium, Robot, Appium.';
+      const expectedText = '\n    Alecio Leandro de Medeiros Ocupação: Estudante de Engenharia de Software Empresa: \nRoche La Hoffman Ferramentas: JavaScript, Cypress, Selenium, Robot, Appium, Node, Template EJS, Icones AJAX, CSS.         \n ';
       cy.get('.container').should('contain.text', expectedText);
     });
   
@@ -16,5 +16,4 @@ describe('Página de Desenvolvedor', () => {
       cy.get('a[href="/contato"]').click();
       cy.url().should('include', '/contato');
     });
-  });
-  
+  });  

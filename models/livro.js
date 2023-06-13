@@ -21,5 +21,4 @@ const livroSchema = new mongoose.Schema({
 
 const Livro = mongoose.model('Livro', livroSchema);
 
-
 module.exports = Livro;

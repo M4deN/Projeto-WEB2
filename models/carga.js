@@ -1,6 +1,5 @@
 const Livro = require("../models/livro");
 
-
 const loadData = async () => {
   try {
     const livros = [
@@ -45,4 +44,3 @@ const loadData = async () => {
 };
 
 module.exports = loadData;
-

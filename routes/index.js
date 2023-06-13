@@ -51,13 +51,11 @@ app.use(session({
     // Obtém o token gerado
     const tokenGerado = gerarToken({ usuario: 'Alecio' }, chaveSecreta);
     console.log('Token gerado:', tokenGerado);
-    
-    // Exibe o token em um alerta JavaScript
-    const alertScript = `<script>alert("Token gerado: ${tokenGerado}"); window.location.href = "/livros";</script>`;
+    const alertScript = `<script>alert("Token gerado: ${tokenGerado}"); window.location.href = "/";</script>`;
     res.send(alertScript);
   });
 
-  // Defina a rota de carga
+  // Rota de carga
   app.get('/carga', async (req, res) => {
     try {
       await loadData();
@@ -162,7 +160,7 @@ app.use(session({
   });
 
  // Rota para exibir o formulário de alteração do usuário
-app.get('/alterar', async (req, res) => {
+app.get('/alterar',verificarAutenticacao, async (req, res) => {
   try {
     // Verificar se há um usuário na sessão
     if (req.session.user) {
@@ -178,7 +176,7 @@ app.get('/alterar', async (req, res) => {
 });
 
 // Rota para atualizar os dados do usuário
-app.post('/alterar/:id', async (req, res) => {
+app.post('/alterar/:id', verificarAutenticacao, async (req, res) => {
   try {
     // Verificar se há um usuário na sessão
     if (req.session.user) {

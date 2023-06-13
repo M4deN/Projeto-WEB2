@@ -153,21 +153,23 @@ li{
 .logout-button,
 .alter-button,
 .del-button,
-.vel-button {
+.vel-button,
+.tok-button {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   position: sticky;
   margin-right: auto;
   margin-top: auto;
-  margin-left: 1%;
+  margin-left: 0.5%;
   
 }
 
 .logout-button a,
 .alter-button a,
 .del-button a,
-.vel-button a{
+.vel-button a,
+.tok-button a{
   top: 2%;
   display: flex;
   align-items: center;
@@ -182,7 +184,8 @@ li{
 .logout-button i,
 .alter-button i,
 .del-button i,
-.vel-button i {
+.vel-button i,
+.tok-button i {
   margin-right: 4px; 
   margin-top: auto;
 }
@@ -190,7 +193,8 @@ li{
 .logout-button:hover a,
 .alter-button:hover a,
 .del-button:hover a,
-.vel-button:hover a {
+.vel-button:hover a,
+.tok-button:hover a{
   color: lime;
 }
 

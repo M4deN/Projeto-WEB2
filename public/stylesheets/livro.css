@@ -37,7 +37,7 @@ p {
 /* Estilos para a lista de livros */
 #livros-lista {
   border-top: 1px solid white;
-  margin-top: -25px;
+  margin-top: -20px;
   padding-top: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -171,18 +171,21 @@ button {
 }
 #add-book-button {
   margin-right: 70%;
+  margin-top: auto;
   position: static;
 }
 button:hover {
   background-color: lime;
 }
 .pagination {
-  margin-top: 5%;
+  margin-top: 2%;
+  margin-bottom: 4%;
 }
 .order-fields {
   display: flex;
   justify-content: center;
   margin-top: 5%;
+  margin-bottom: 2%;
 } 
 
 .order-fields select {
@@ -190,13 +193,13 @@ button:hover {
   margin-left: 10px;
 }
 .pagination a {
-  display: inline-block;
+  position:relative;
   padding: 8px 12px;
   margin-right: 5px;
   background-color: white;
   font-weight: bold;
-  color:black;
   text-decoration: none;
+  color: black;
   border-radius: 4px;
 }
 
@@ -253,11 +256,17 @@ button:hover {
 
 #add-book-button,#export-pdf-button
  {
-  display:flex;
+  margin-top: 1%;
+  display:static;
   position: relative;
 }
 
 #export-pdf-button {
-  top: -50px;
-  margin-left: 88%;
+  display:static;
+  position: relative;
+  top: -35px;
+  margin-top: auto;
+  margin-left: 89%;
+  left: auto;
+  right: auto;
 }

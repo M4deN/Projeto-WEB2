@@ -5,7 +5,7 @@ const routes = require('./routes/index');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-
+// Importação confiogurção .ENV
 dotenv.config();
 
 // Inicialização do aplicativo Express
@@ -31,13 +31,10 @@ mongoose.connect(mongoDBURL, { useNewUrlParser: true, useUnifiedTopology: true }
     console.log('Conexão com o MongoDB estabelecida.');
   })
   .catch((error) => {
-    const errorMessage = `Erro ao conectar ao MongoDB: ${error}`;
-    const script = `<script>alert("${errorMessage}"); window.location.href = "/livros/adicionar";</script>`;
-    res.send(script);
     console.error('Falha na conexão com o MongoDB:', error);
   });
 
-// Configuração das rotas
+// Importação das rotas
 routes(app);
 
 // Exportação do servidor

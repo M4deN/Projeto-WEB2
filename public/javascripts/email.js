@@ -1,5 +1,4 @@
 const nodemailer = require('nodemailer');
-const Swal = require('sweetalert2');
 
 // Função para enviar e-mail
 exports.enviarEmail = (req, res) => {
