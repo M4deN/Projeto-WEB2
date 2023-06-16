@@ -1,0 +1,89 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  height: auto;
+  width: auto;
+  margin: auto;
+  margin-top:auto;
+}   
+
+h1 {
+  margin-top: 5%;
+  text-align: center;
+  color: white;
+}  
+
+.container {
+  max-width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}  
+
+button {
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border: 1px solid white;
+  width: 15%;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-top: 3%;
+}
+
+img {
+  width: 30%;
+  height: 30%;
+}
+.container h1 {
+  font-size: 24px;
+  color: white;
+}
+ 
+.detalhes-livro {
+  margin-top: auto;
+  text-align: center;
+}
+  
+.detalhes-livro p {
+  font-size: 18px;
+  color: white;
+}
+
+.container .detalhes-livro p {
+  margin-bottom: 1em;
+}
+  
+.container .detalhes-livro .campo-livro {
+  font-size: 16px;
+}  
+  
+.container button:hover {
+  background-color: lime;
+}  
+
+p {
+  margin: 0;
+  color: white;
+} 
+  
+footer {
+  margin-top: 5px;
+  position: fixed;
+  font-size: 16px;
+  padding: 5px;
+  background-color: black;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+
+footer p {
+  margin-top: 0.6%;
+  color: lime;
+}

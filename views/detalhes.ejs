@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Detalhes do Livro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="/stylesheets/livro-detalhes.css">
+</head>
+<body>
+  <h1>DETALHES DO LIVRO <i class="fas fa-info-circle"></i></h1>
+  <div class="container">
+    <div class="detalhes-livro">
+      <img src="/images/book.png">
+      <p><strong>ID:</strong><span class="campo-livro"> <%= livro.id %></span></p>
+      <p><strong>Título:</strong><span class="campo-livro"> <%= livro.titulo %></span></p>
+      <p><strong>Ano de Publicação:</strong><span class="campo-livro"> <%= livro.anoPublicacao %></span></p>
+      <p><strong>Autor:</strong> <span class="campo-livro"> <%= livro.autor %></span></p>
+      <p><strong>Editora:</strong> <span class="campo-livro"> <%= livro.editora %></span></p>
+    </div>
+    <button type="button" onclick="window.location.href='/livros'">Voltar</button>
+  </div>
+  <footer>
+    <p>© 2023 Projeto Web Ciclo 2. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

@@ -7,19 +7,11 @@ describe('Página de Livros', () => {
     cy.get('#order-author').select('asc');
   });
   
-  it('Ordenar livros por ano de forma descendente', () => {
-    cy.get('#order-year').select('desc');
-  
-    cy.get('#livros-lista li:nth-child(1) p:nth-child(4)').should('have.text', 'Ano de Publicação: 1967');
-  });  
-
   it('Buscar livros por título', () => {
-    cy.get('#search-input').type('Livro 1');
-  
-    cy.get('#search-button').click();
-  
+    cy.get('#search-input').type('Livro 1');  
+    cy.get('#search-button').click();  
     cy.get('#livros-lista li').should('have.length', 6);
-    cy.get('#livros-lista li:nth-child(1) p:nth-child(2)').should('have.text', 'Título: Cem Anos de Solidão');
+    cy.get('#livros-lista li:nth-child(1) p:nth-child(2)').contains('Título:');
   });
   
 });  

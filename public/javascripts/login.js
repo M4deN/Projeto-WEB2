@@ -1,6 +1,8 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
 const User = require("../../models/user");
+const chaveSecreta ='$has123456#';
+const jwt = require('jsonwebtoken');
 
 const router = express.Router();
 
@@ -24,12 +26,15 @@ router.post('/', [
 
     if (user) {
       if (senha === user.senha) {
+
+        const token = jwt.sign({ usuario: req.session.user }, chaveSecreta);
+        console.log('Token Gerado:', token);
+        // Armazenar o token na sessão
+        req.session.token = token;
         // Definicao dos dados na sessão
         req.session.user = user;
-
-        const welcomeMessage = `Bem-vindo, ${user.nome}!`;
+        const welcomeMessage = `Bem-vindo, ${user.nome}!`;       
         res.send(`<script>alert("${welcomeMessage}"); window.location.href = "/";</script>`);
-
       } else {
         const errorMessage = 'Senha inválida';
         res.send(`<script>alert("${errorMessage}"); window.location.href = "/login";</script>`);

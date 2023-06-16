@@ -10,14 +10,14 @@ describe('Página de Login', () => {
     });
   
     it('Deve redirecionar para a página inicial ao fazer login com credenciais corretas', () => {
-      cy.get('[type="text"]').type('charlie_brandbury@outlook.com');
+      cy.get('[type="email"]').type('charlie_brandbury@outlook.com');
       cy.get('[type="password"]').type('123456');
       cy.get('button[type="submit"]').click();
       cy.url().should('include', '/');
     });
   
     it('Deve exibir uma mensagem de erro ao fazer login com credenciais incorretas', () => {
-      cy.get('[type="text"]').type('usuario@invalido.com');
+      cy.get('[type="email"]').type('usuario@invalido.com');
       cy.get('[type="password"]').type('senhaerrada');
       cy.get('button[type="submit"]').click();
       cy.on('window:alert', (alertText) => {

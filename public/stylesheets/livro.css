@@ -47,7 +47,7 @@ p {
 
 #livros-lista li {
   width: calc(25% - 10px);
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid white;
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
@@ -169,6 +169,18 @@ button {
   transition: background-color 0.3s;
   margin-top: 2%;
 }
+
+button[type="submit"] {
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  width: 20%;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  max-width: 155px;
+}
+
 #add-book-button {
   margin-right: 70%;
   margin-top: auto;
@@ -179,7 +191,7 @@ button:hover {
 }
 .pagination {
   margin-top: 2%;
-  margin-bottom: 4%;
+  margin-bottom: 5%;
 }
 .order-fields {
   display: flex;
@@ -254,19 +266,19 @@ button:hover {
   font-size: small;
 }
 
-#add-book-button,#export-pdf-button
- {
-  margin-top: 1%;
-  display:static;
-  position: relative;
-}
-
 #export-pdf-button {
   display:static;
   position: relative;
-  top: -35px;
+  top: -43px;
   margin-top: auto;
   margin-left: 89%;
   left: auto;
   right: auto;
+}
+
+#save-book-button {
+  width: 22.5%;  
+  max-width: 170px;
+  font-size: 14px;
+  
 }

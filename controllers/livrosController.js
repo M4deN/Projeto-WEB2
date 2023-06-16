@@ -1,4 +1,13 @@
+const Joi = require('joi');
 const Livro = require('../models/livro');
+
+// Validação do esquema do livro
+const livroSchema = Joi.object({
+  titulo: Joi.string().required(),
+  anoPublicacao: Joi.number().required(),
+  autor: Joi.string().required(),
+  editora: Joi.string().required()
+});
 
 // lista de todos os livros
 const obterLivros = async (req, res) => {
@@ -9,7 +18,7 @@ const obterLivros = async (req, res) => {
   } catch (error) {
     console.log('ou aqui');
     console.error(error);
-    res.status(500).send('Erro ao obter a lista de livros');
+    res.status(500).send(`<script>alert('Erro ao obter a lista de livros'); window.location.href = "/";</script>`);
   }
 };
 
@@ -17,10 +26,23 @@ const obterLivros = async (req, res) => {
 const adicionarLivro = async (req, res) => {
   try {
     const novoLivro = req.body;
+
+    // Validar os dados do novo livro
+    const { error } = livroSchema.validate(novoLivro);
+    if (error) {
+      const errorMessage = 'Dados inválidos do livro';
+      const script = `<script>alert("${errorMessage}"); window.location.href = "/livros/adicionar";</script>`;
+      return res.send(script);
+    }
+
     const livroCriado = await Livro.create(novoLivro);
 
     const successMessage = 'Livro adicionado com sucesso!';
     const script = `<script>alert("${successMessage}"); window.location.href = "/livros";</script>`;
+    
+    // Utilizar o livroCriado conforme necessário
+    console.log('Livro criado:', livroCriado);
+
     res.send(script);
   } catch (error) {
     const errorMessage = 'Erro ao adicionar um novo livro';
@@ -29,24 +51,29 @@ const adicionarLivro = async (req, res) => {
   }
 };
 
-// detalhes de um livro específico
-const obterDetalhesLivro = async (req, res) => {
+const obterDetalhesLivro = async (req, res, next) => {
   try {
     const livroId = req.params.id;
-    if (!mongoose.Types.ObjectId.isValid(livroId)) {
+    // Verificar se o ID do livro é válido
+    if (!livroId) {
       return res.status(400).send('ID de livro inválido');
     }
-
+    //obtenção dos detalhes do livro a partir do banco de dados
     const livro = await Livro.findById(livroId).exec();
-    console.log('entrou aqui');
+
     if (!livro) {
-      return res.status(404).send('Livro não encontrado');
+      const errorMessage = 'Livro não encontrado';
+      const script = `<script>alert("${errorMessage}"); window.location.href = "/livros";</script>`;
+      return res.send(script);
     }
 
-    res.send(livro);
+    req.livroDetalhes = livro;
+    next();
   } catch (error) {
     console.error(error);
-    res.status(500).send('Erro ao obter os detalhes do livro');
+    const errorMessage = 'Erro ao obter os detalhes do livro';
+    const script = `<script>alert("${errorMessage}"); window.location.href = "/livros";</script>`;
+    res.send(script);
   }
 };
 
@@ -55,6 +82,14 @@ const atualizarLivro = async (req, res) => {
   try {
     const livroId = req.params.id;
     const livroAtualizado = req.body;
+
+    // Validar os dados do livro atualizado
+    const { error } = Livro.validate(livroAtualizado);
+    if (error) {
+      const errorMessage = 'Dados inválidos do livro';
+      const script = `<script>alert("${errorMessage}"); window.location.href = "/livros";</script>`;
+      return res.send(script);
+    }
 
     const livro = await Livro.findByIdAndUpdate(livroId, livroAtualizado, { new: true }).exec();
 
@@ -67,6 +102,7 @@ const atualizarLivro = async (req, res) => {
     const successMessage = 'Livro atualizado com sucesso!';
     const script = `<script>alert("${successMessage}"); window.location.href = "/livros";</script>`;
     res.send(script);
+    console.log('Livro Atualizado:', livroAtualizado);
   } catch (error) {
     console.error(error);
     const errorMessage = 'Erro ao atualizar o livro';
@@ -82,13 +118,17 @@ const excluirLivro = async (req, res) => {
     const livroExcluido = await Livro.findByIdAndDelete(livroId).exec();
 
     if (!livroExcluido) {
-      return res.status(404).send('Livro não encontrado');
+      const errorMessage = 'Livro não encontrado';
+      const script = `<script>alert("${errorMessage}"); window.location.href = "/livros";</script>`;
+      return res.send(script);
     }
-
     res.send(livroExcluido);
+    console.log('Livro Excluido:', livroExcluido);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Erro ao excluir o livro');
+    const errorMessage = 'Erro ao excluir o livro';
+    const script = `<script>alert("${errorMessage}"); window.location.href = "/livros";</script>`;
+    res.send(script);
   }
 };
 
@@ -98,13 +138,17 @@ const exibirFormularioEdicaoLivro = async (req, res) => {
     const livro = await Livro.findById(livroId).exec();
 
     if (!livro) {
-      return res.status(404).send('Livro não encontrado');
+      const errorMessage = 'Livro não encontrado';
+      const script = `<script>alert("${errorMessage}"); window.location.href = "/livros";</script>`;
+      return res.send(script);
     }
 
     res.render('editar', { livro });
   } catch (error) {
     console.error(error);
-    res.status(500).send('Erro ao exibir o formulário de edição do livro');
+    const errorMessage = 'Erro ao exibir o formulário de edição do livro';
+    const script = `<script>alert("${errorMessage}"); window.location.href = "/livros";</script>`;
+    res.send(script);
   }
 };
 

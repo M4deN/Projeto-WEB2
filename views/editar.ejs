@@ -8,14 +8,15 @@
 </head>
 <body>
   <div class="container">
-    <h1>EDITAR LIVRO<i class="fas fa-edit"></i></h1>
+    <h1>EDITAR LIVRO <i class="fas fa-edit"></i></h1>
     <form method="POST" action="/livros/<%= livro._id %>">
         <input type="hidden" name="_method" value="PUT">
         <input type="text" name="titulo" value="<%= livro.titulo %>" required>
         <input type="number" name="anoPublicacao" value="<%= livro.anoPublicacao %>" required>
         <input type="text" name="autor" value="<%= livro.autor %>" required>
         <input type="text" name="editora" value="<%= livro.editora %>" required>
-        <button type="submit">Salvar</button>
+        <button type="submit"><i class="fas fa-save"></i> Salvar</button>
+        <button type="button" onclick="window.location.href='/livros/<%= livro._id %>'"><i class="fas fa-info-circle"></i> Obter Detalhes</button>  
       </form>      
   </div>
   <footer>

@@ -37,7 +37,7 @@ const loadData = async () => {
     ];
 
     await Livro.insertMany(livros);
-    console.log('Carga automática de dados concluída com sucesso!');
+    console.log('Carga automática de 5 Exemplares concluída!!');
   } catch (error) {
     console.error('Erro ao realizar carga automática de dados:', error);
   }

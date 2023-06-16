@@ -16,7 +16,7 @@ const orderAuthorSelect = document.getElementById('order-author');
     });
 
     // Manter a opção selecionada no select de ordenar por ano
-    const currentOrderYear = orderYearSelect.value;
-    orderYearSelect.addEventListener('click', function() {
+        const currentOrderYear = orderYearSelect.value;
+        orderYearSelect.addEventListener('change', function() {
         this.value = currentOrderYear;
-    });
+});
