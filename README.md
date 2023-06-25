@@ -2,7 +2,7 @@
 
 Este projeto é parte da disciplina e tem como objetivo permitir que os alunos apliquem os conceitos e temas abordados em aula. O projeto consiste no desenvolvimento de um sistema web, onde o aluno tem a liberdade de escolher o domínio do sistema, desde que atenda aos requisitos definidos. Este repositório contém o código-fonte do projeto web que utiliza as seguintes tecnologias: Node.js, Express.js, MongoDB, EJS, entre outras.
 
-### Ciclo 1 - Site de Apresentação (valor: 30%)
+### Ciclo 1 - Site de Apresentação
 
 Neste ciclo inicial, cada projeto deve atender aos seguintes requisitos e realizar as seguintes atividades:
 
@@ -18,17 +18,15 @@ Neste ciclo inicial, cada projeto deve atender aos seguintes requisitos e realiz
 
 Para o desenvolvimento deste ciclo, é obrigatório utilizar o framework Express.js. Os demais pacotes e recursos utilizados são de livre escolha de cada desenvolvedor. Neste ciclo, não é necessário criar uma API para separação entre back-end e front-end. O conteúdo e os dados devem ser disponibilizados em um único servidor. No entanto, é permitido o uso de um framework front-end como React, Vue ou Angular, desde que estejam integrados em um único projeto.
 
-### Ciclo 2 - Sistema (valor: 40% back-end e 30% front-end)
+### Ciclo 2 - Sistema Completo integrado com Banco
 
 Nesta segunda etapa do projeto, o objetivo é criar um sistema dinâmico integrado com um banco de dados (relacional ou NoSQL) por meio de uma API web (back-end) e um cliente web (front-end) que consumirá a API desenvolvida.
 
 Como requisito principal, o sistema deve permitir pelo menos 3 tipos de cadastros (operações de CRUD completas) que apresentem um relacionamento de um-para-muitos ou muitos-para-muitos, de acordo com a escolha de cada aluno. Um desses cadastros deve ser relacionado ao usuário. O front-end da aplicação deve consumir a API desenvolvida, realizar a validação dos dados fornecidos pelo usuário, além de tratar os erros e mensagens geradas pela API.
 
-A API também deve realizar a validação dos campos, considerando que os dados podem vir de uma fonte diferente do cliente desenvolvido. Mensagens de erro e sucesso devem ser enviadas juntamente com as respostas. Os métodos HTTP GET, POST, PUT e DELETE devem ser utilizados de acordo com a operação a ser executada. O banco de dados pode ser relacional (
+A API também deve realizar a validação dos campos, considerando que os dados podem vir de uma fonte diferente do cliente desenvolvido. Mensagens de erro e sucesso devem ser enviadas juntamente com as respostas. Os métodos HTTP GET, POST, PUT e DELETE devem ser utilizados de acordo com a operação a ser executada. O banco de dados pode ser relacional (ex. MySQL ou PostgreSQL) ou NoSQL (ex. MongoDB).
 
-ex. MySQL ou PostgreSQL) ou NoSQL (ex. MongoDB).
-
-Para resumir, os seguintes recursos devem ser desenvolvidos:
+Em resumo, os seguintes recursos foram desenvolvidos:
 
 - Implementação de uma API REST.
 - Consumo assíncrono dos dados da API pelo cliente.
@@ -47,6 +45,7 @@ Para resumir, os seguintes recursos devem ser desenvolvidos:
 - Implementação de uma rota que realiza uma carga automática dos dados, garantindo que cada coleção tenha pelo menos 5 registros prévios.
 - Desenvolvimento de uma rota que exiba um relatório no formato de gráfico e que possa ser exportado em PDF.
 
+![inicial](https://github.com/M4deN/Projeto_WEB/blob/main/public/images/initial.png)
 
 ## Funcionalidades
 
@@ -57,6 +56,10 @@ O projeto consiste em uma aplicação web para gerenciamento de livros, com as s
 - Obter os detalhes de um livro
 - Atualizar informações de um livro
 - Excluir um livro
+- Cadastro de usuários
+- Alteração de cadastro e exclusão de conta
+
+![book](https://github.com/M4deN/Projeto_WEB/blob/main/public/images/book1.png)
 
 ## Pré-requisitos
 
@@ -114,7 +117,7 @@ npx cypress open
 
 Isso abrirá a interface do Cypress, onde você poderá selecionar e executar os testes desejados.
 
-![Testes](caminho/para/a/imagem.png)
+![Testes](https://github.com/M4deN/Projeto_WEB/blob/main/public/images/Tests.png)
 
 ## Estrutura de Arquivos
 
