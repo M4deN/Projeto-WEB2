@@ -129,6 +129,7 @@ A estrutura de arquivos do projeto é organizada da seguinte forma:
 - `controllers/livrosController.js`: arquivo com os controladores das rotas relacionadas aos livros.
 - `public/`: diretório que contém arquivos estáticos, como CSS e JavaScript.
 - `views/`: diretório que contém os templates EJS utilizados para renderizar as páginas HTML.
+- `cypress/`: diretório que contém os arquivos de testes automatizados.
 
 ## Licença
 
