@@ -1,8 +1,8 @@
 const express = require('express');
-const Livro = require("../../models/livro");
+const Livro = require("../models/livro");
 const router = express.Router();
 
-// Rota de login
+// Rota de Obter todos os livros Ordenado
 router.get('/livros', async (req, res) => { 
         try {
           const pagina = req.query.pagina || 1; 

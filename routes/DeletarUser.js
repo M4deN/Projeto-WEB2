@@ -1,8 +1,8 @@
 const express = require('express');
-const User = require("../../models/user");
+const User = require("../models/user");
 const router = express.Router();
 
-// Rota de Obter todos os livros Ordenado
+// Rota deletar user
 router.get('/excluir', async (req, res) => { 
     if (req.session.user) {
         const user = req.session.user;
@@ -30,4 +30,4 @@ router.get('/excluir', async (req, res) => {
       }
 }); 
 
-    module.exports = router;
+module.exports = router;

@@ -1,16 +1,16 @@
 const fs = require('fs');
 const { enviarEmail } = require('../public/javascripts/email');
 const livrosController = require('../controllers/livrosController');
-const cadastroRouter = require("../public/javascripts/cadastro");
-const loginRouter = require("../public/javascripts/login");
+const cadastroRouter = require("../routes/cadastro");
+const loginRouter = require("../routes/login");
 const User = require("../models/user");
 const session = require('express-session');
 const loadData = require("../models/carga");
-const livrosRouter = require("../public/javascripts/ObterTodosLivros");
+const livrosRouter = require("../routes/ObterTodosLivros");
 const path = require('path');
-const gerarRelatorio = require("../public/javascripts/gerarPdf");
-const UserRouter = require("../public/javascripts/DeletarUser");
-const alterRouter = require("../public/javascripts/AlterarUser");
+const gerarRelatorio = require("../routes/gerarPdf");
+const UserRouter = require("../routes/DeletarUser");
+const alterRouter = require("../routes/AlterarUser");
 const chaveSecreta ='$has123456#';
 
 module.exports = (app) => {
@@ -182,8 +182,7 @@ app.get('/alterar',verificarAutenticacao, async (req, res) => {
 });
 
 // Rota para atualizar os dados do usuário
-app.post('/alterar/:id', verificarAutenticacao,alterRouter );
-  
+app.post('/alterar/:id', verificarAutenticacao,alterRouter );//Mexi NESSE AGORA  
   
   // Rota para o envio do formulário de contato
   app.post('/contato/enviar', enviarEmail);

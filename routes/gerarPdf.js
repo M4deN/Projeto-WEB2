@@ -2,7 +2,7 @@ const { createCanvas } = require('canvas');
 const path = require('path');
 const fs = require('fs');
 const PDFDocument = require('pdfkit');
-const Livro = require("../../models/livro");
+const Livro = require("../models/livro");
 
 async function gerarRelatorio() {
     const countByYear = await Livro.aggregate([
@@ -37,7 +37,7 @@ async function gerarRelatorio() {
       ctx.fillText(labels[i].toString(), x, canvas.height - 30);
     }
   
-    const imagePath = path.join(__dirname, "../reports/chart.png");
+    const imagePath = path.join(__dirname, "../public/reports/chart.png");
     const stream = fs.createWriteStream(imagePath);
     await new Promise((resolve, reject) => {
       stream.on('finish', resolve);
@@ -45,7 +45,7 @@ async function gerarRelatorio() {
       canvas.createPNGStream().pipe(stream);
     });
   
-    const pdfPath = path.join(__dirname, "../reports/chart.png");
+    const pdfPath = path.join(__dirname, "../public/reports/chart.png");
     const pdfDoc = new PDFDocument();  
     const writeStream = fs.createWriteStream(pdfPath);
     pdfDoc.pipe(writeStream);  

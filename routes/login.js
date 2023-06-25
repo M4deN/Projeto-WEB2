@@ -1,6 +1,6 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
-const User = require("../../models/user");
+const User = require("../models/user");
 const chaveSecreta ='$has123456#';
 const jwt = require('jsonwebtoken');
 
