@@ -105,6 +105,36 @@ Siga as etapas abaixo para executar a aplicação em seu ambiente local:
    http://localhost:3000
    ```
 
+## Configuração do Arquivo `.env`
+
+O arquivo `.env` é usado para armazenar informações sensíveis e variáveis de ambiente do projeto. Antes de executar o projeto, você precisará criar esse arquivo e configurar as seguintes variáveis de ambiente:
+
+```
+EMAIL_HOST=smtp.office365.com
+EMAIL_PORT=587
+EMAIL_USER=email@outlook.com
+EMAIL_SENHA=mypassword
+EMAIL_DESTINO=email2@outlook.com
+PORT=3000
+MONGODB_URL=mongodb://127.0.0.1:27017/Livraria
+USERNAME=email@outlook.com
+PASSWORD=password
+```
+
+Certifique-se de inserir os valores fictícios acima pelos dados reais correspondentes.
+
+- `EMAIL_HOST`: O endereço do servidor de email a ser usado para envio de emails.
+- `EMAIL_PORT`: A porta do servidor de email.
+- `EMAIL_USER`: O usuário do email utilizado para autenticação.
+- `EMAIL_SENHA`: A senha do email para autenticação.
+- `EMAIL_DESTINO`: O endereço de email de destino para receber as mensagens enviadas.
+- `PORT`: A porta em que o servidor web será executado localmente.
+- `MONGODB_URL`: A URL de conexão para o banco de dados MongoDB.
+- `USERNAME`: O nome de usuário para autenticação no sistema.
+- `PASSWORD`: A senha para autenticação no sistema.
+
+Certifique-se de criar o arquivo `.env` na raiz do projeto e definir as variáveis de ambiente conforme mostrado acima. Não compartilhe ou inclua esse arquivo no controle de versão, pois ele contém informações sensíveis.
+
 ## Testes
 
 O projeto inclui testes automatizados para as funcionalidades da API REST. Os testes são desenvolvidos utilizando a biblioteca Cypress.
