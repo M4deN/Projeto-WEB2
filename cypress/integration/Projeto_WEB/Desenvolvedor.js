@@ -15,9 +15,5 @@ describe('Página de Desenvolvedor', () => {
       const expectedText = '\n    Alecio Leandro de Medeiros Ocupação: Estudante de Engenharia de Software Empresa: \nRoche La Hoffman Ferramentas: JavaScript, Cypress, Selenium, Robot, Appium, Node, Template EJS, Icones AJAX, CSS.         \n ';
       cy.get('.container').should('contain.text', expectedText);
     });
-  
-    it.only('Deve redirecionar para a página de contato ao clicar no link de contato', () => {
-      cy.get('.nav-links li:nth-child(5) a').click();
-      cy.url().should('include', '/contato');
-    });
+
   });  

@@ -4,7 +4,7 @@ describe('Página de Livros', () => {
     cy.get('#email').type('usuario@example.com');
     cy.get('#senha').type('senha123');
     cy.get('button[type="submit"]').click();
-    cy.get('.nav-links li:nth-child(7) a').click();
+    cy.get('a[href="/livros"]').click();
   });
 
   it('Ordenar livros por autor de forma ascendente', () => {
