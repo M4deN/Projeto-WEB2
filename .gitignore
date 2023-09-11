@@ -126,5 +126,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+node_modules/
+cypress/downloads/
 cypress/screenshots/
 cypress/videos/
