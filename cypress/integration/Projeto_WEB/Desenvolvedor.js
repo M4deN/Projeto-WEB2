@@ -1,6 +1,7 @@
 describe('Página de Desenvolvedor', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:3000/desenvolvedor');
+      cy.visit('http://localhost:3000');
+      cy.get('.nav-links li:nth-child(4) a').click();
     });
   
     it('Deve exibir o título "DESENVOLVEDOR"', () => {
