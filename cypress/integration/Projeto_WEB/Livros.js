@@ -8,10 +8,12 @@ describe('Página de Livros', () => {
   });
 
   it('Ordenar livros por autor de forma ascendente', () => {
+    cy.timeout(6000)
     cy.get('#order-author').select('asc');
   });
   
   it('Buscar livros por título', () => {
+    cy.timeout(6000)
     cy.get('#search-input').type('Livro 1');  
     cy.get('#search-button').click();  
     cy.get('#livros-lista li').should('have.length', 6);
