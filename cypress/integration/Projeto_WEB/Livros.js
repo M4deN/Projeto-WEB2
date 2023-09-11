@@ -9,7 +9,7 @@ describe('Página de Livros', () => {
 
   it('Ordenar livros por autor de forma ascendente', () => {
     cy.timeout(6000)
-    cy.get('#order-author').select('asc');
+    cy.get('#order-author').select('A-Z')
   });
   
   it('Buscar livros por título', () => {

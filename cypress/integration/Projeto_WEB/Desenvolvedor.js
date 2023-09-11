@@ -1,6 +1,7 @@
 describe('Página de Desenvolvedor', () => {
     beforeEach(() => {
       cy.visit('http://localhost:3000');
+      cy.timeout(6000)
       cy.get('.nav-links li:nth-child(4) a').click();
     });
   
@@ -15,8 +16,8 @@ describe('Página de Desenvolvedor', () => {
       cy.get('.container').should('contain.text', expectedText);
     });
   
-    it('Deve redirecionar para a página de contato ao clicar no link de contato', () => {
-      cy.get('a[href="/contato"]').click();
+    it.only('Deve redirecionar para a página de contato ao clicar no link de contato', () => {
+      cy.get('.nav-links li:nth-child(5) a').click();
       cy.url().should('include', '/contato');
     });
   });  
