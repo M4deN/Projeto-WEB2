@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout
@@ -22,13 +22,16 @@ jobs:
           node-version: '18' 
 
       - name: Instalar Dependências
-        run: npm install 
+        run: |
+          npm install 
+          npm install -g nodemon
 
-      - name: Iniciar Aplicação
-        run: npm start &
+      - name: Iniciar Aplicação com Nodemon
+        run: nodemon index.js &
 
       - name: Esperar a Inicialização
         run: sleep 10 
 
       - name: Rodar Testes
         run: npm run test 
+
