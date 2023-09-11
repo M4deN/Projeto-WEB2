@@ -4,7 +4,7 @@ describe('Página de Desenvolvedor', () => {
     });
   
     it('Deve exibir o título "DESENVOLVEDOR"', () => {
-      cy.get('h1').should('contain.text', 'DESENVOLVEDOR');
+      cy.get('h1').should('have.text', 'DESENVOLVEDOR');
     });
   
     it('Deve exibir as informações do desenvolvedor corretamente', () => {
