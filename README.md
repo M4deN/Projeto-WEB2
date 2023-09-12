@@ -142,7 +142,7 @@ O projeto inclui testes automatizados para as funcionalidades da API REST. Os te
 Para executar os testes automatizados, certifique-se de que a aplicação esteja em execução. Em seguida, execute o seguinte comando no diretório raiz do projeto:
 
 ```
-npx cypress open
+npm run cy:open
 ```
 
 Isso abrirá a interface do Cypress, onde você poderá selecionar e executar os testes desejados.
@@ -160,6 +160,29 @@ A estrutura de arquivos do projeto é organizada da seguinte forma:
 - `public/`: diretório que contém arquivos estáticos, como CSS e JavaScript.
 - `views/`: diretório que contém os templates EJS utilizados para renderizar as páginas HTML.
 - `cypress/`: diretório que contém os arquivos de testes automatizados.
+
+## Integração Contínua (CI)
+
+Este projeto utiliza GitHub Actions para integração contínua. A configuração da CI pode ser encontrada no arquivo [`.github/workflows/ci.yml`](./.github/workflows/ci.yml). Os passos da CI incluem:
+
+- **Checkout do Repositório**: O código do repositório é clonado no ambiente de execução da CI.
+
+- **Configuração do Ambiente Node.js**: É configurada a versão do Node.js especificada no arquivo de configuração.
+
+- **Instalação de Dependências**: Todas as dependências do projeto são instaladas usando o npm.
+
+- **Execução de Testes**: Os testes automatizados são executados para garantir a integridade do código.
+
+- **Implantação Automática (se aplicável)**: Dependendo da configuração, a aplicação pode ser implantada automaticamente após uma confirmação bem-sucedida.
+
+A CI é acionada automaticamente a cada push na branch principal (main). Certifique-se de que todas as alterações são testadas localmente antes de fazer o push para o repositório remoto.
+
+Para mais detalhes, consulte o [arquivo de configuração da CI](./.github/workflows/ci.yml).
+
+---
+
+**Observação**: Certifique-se de manter atualizado o arquivo de configuração da CI para refletir quaisquer alterações em seus requisitos de construção e teste.
+
 
 ## Licença
 
