@@ -1,5 +1,3 @@
-// Arquivo: cypress/integration/contato.spec.js
-
 describe('Página de Contato', () => {
     beforeEach(() => {
       cy.visit('http://localhost:3000/contato');
