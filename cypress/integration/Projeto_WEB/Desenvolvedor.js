@@ -1,6 +1,9 @@
+const { accessSync } = require("fs");
+
 describe('Página de Desenvolvedor', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:3000/desenvolvedor');
+      cy.visit('http://localhost:3000/')
+      cy.get('a[href="/desenvolvedor"]').click()
     });
   
     it('Deve exibir o título "DESENVOLVEDOR"', () => {

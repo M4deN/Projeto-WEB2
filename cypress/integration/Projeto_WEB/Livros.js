@@ -1,6 +1,8 @@
 describe('Página de Livros', () => {
   before(() => {
     cy.visit('http://localhost:3000/livros');
+    cy.get('#order-author').should('exist');
+    cy.get('#search-input').should('exist');
   });
 
   it('Ordenar livros por autor de forma ascendente', () => {
