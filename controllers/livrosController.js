@@ -84,7 +84,7 @@ const atualizarLivro = async (req, res) => {
     const livroAtualizado = req.body;
 
     // Validar os dados do livro atualizado
-    const { error } = Livro.validate(livroAtualizado);
+    const { error } = livroSchema.validate(livroAtualizado); // Correção aqui
     if (error) {
       const errorMessage = 'Dados inválidos do livro';
       const script = `<script>alert("${errorMessage}"); window.location.href = "/livros";</script>`;

@@ -6,17 +6,20 @@
     "start": "nodemon ./bin/www",
     "cy:open": "cypress open",
     "cy:open:mobile": "cypress open --config viewportWidth=370 viewportHeight=660",
-    "test": "cypress run",
+    "lint": "eslint cypress/**/*.js && eslint cypress.config.js",
+    "lint:fix": "eslint cypress/**/*.js --fix && eslint cypress.config.js --fix",
+    "test": "cypress run --reporter nyan",
     "test:mobile": "cypress run --config viewportWidth=370 viewportHeight=660"
   },
   "dependencies": {
     "canvas": "^2.11.2",
     "cookie-parser": "~1.4.4",
-    "cypress": "^9.6.0",
+    "cypress": "^13.3.0",
+    "cypress-plugin-api": "^2.11.1",
     "debug": "~2.6.9",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.9",
-    "express": "~4.16.1",
+    "express": "^4.18.2",
     "express-session": "^1.17.3",
     "express-validator": "^7.0.1",
     "fs": "^0.0.1-security",
@@ -29,5 +32,8 @@
     "puppeteer": "^20.5.0",
     "sweetalert": "^2.1.2",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.43.0"
   }
 }
