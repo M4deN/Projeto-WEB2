@@ -147,7 +147,13 @@ npm run cy:open
 
 Isso abrirá a interface do Cypress, onde você poderá selecionar e executar os testes desejados.
 
-![Testes](https://github.com/M4deN/Projeto_WEB/blob/main/public/images/Tests.png)
+https://github.com/M4deN/Projeto-WEB2/assets/43422425/11b426af-0b6d-46a2-a721-76b91668e7d8
+
+https://github.com/M4deN/Projeto-WEB2/assets/43422425/d693e235-df09-48ea-a7bc-7f2ea9443276
+
+https://github.com/M4deN/Projeto-WEB2/assets/43422425/3ab5c5fa-1499-4eac-a20d-f91783cc27b9
+
+https://github.com/M4deN/Projeto-WEB2/assets/43422425/9718a10f-46fe-4d3c-ba4f-00a39806ffd7
 
 ## Estrutura de Arquivos
 
