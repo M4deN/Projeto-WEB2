@@ -1,4 +1,4 @@
-name: Integração Contínua
+name: Integração Contínua Projeto WEB 2
 
 on:
   push:
@@ -7,8 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
-
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -29,9 +28,8 @@ jobs:
       - name: Iniciar Aplicação com Nodemon
         run: nodemon index.js &
 
-      - name: Esperar a Inicialização
-        run: sleep 10 
+      - name: Executar ESLint
+        run: npm run lint
 
       - name: Rodar Testes
-        run: npm run test 
-
+        run: npm run test

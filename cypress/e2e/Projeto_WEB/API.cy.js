@@ -190,6 +190,7 @@ describe('Testes da API', () => {
     })
   })
 
+
   it('Deve excluir um livro existente', () => {
     cy.request('POST', '/login', {
       username: Cypress.env('USERNAME'),
@@ -235,4 +236,5 @@ describe('Testes da API', () => {
       expect(response.status).to.equal(200)
     })
   })
+
 })
