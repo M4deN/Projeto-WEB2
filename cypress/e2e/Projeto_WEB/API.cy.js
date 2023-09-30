@@ -123,7 +123,7 @@ describe('Testes da API', () => {
     })
   })
 
-  it.skipp('Deve obter o total de livros', () => {
+  it.skip('Deve obter o total de livros', () => {
     cy.request('/livros')
       .its('body')
       .then((body) => {
