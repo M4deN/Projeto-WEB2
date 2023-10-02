@@ -192,4 +192,4 @@ Para mais detalhes, consulte o [arquivo de configuração da CI](./.github/workf
 
 ## Licença
 
-Este projeto está licenciado sob a Licença ISC. Consulte o arquivo [LICENSE](./LICENSE) para obter mais informações.
+Este projeto está licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](./LICENSE) para obter mais informações.
