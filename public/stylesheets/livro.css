@@ -118,20 +118,22 @@ p {
   color: black;
   font-weight: bold;
 }
-footer {
-  margin-top: 5px;
+footer{
+  clear: both;
+  border-top: 1px solid #c7c6c6; 
   position: fixed;
-  font-size: 16px;
-  padding: 5px;
-  background-color: black;
+  background-color:black;
   bottom: 0;
-  text-align: center;
   width: 100%;
+  padding: 5px;
+  text-align: center;
 }
-
-footer p {
-  margin-top: 0.6%;
-  color: lime;
+footer p, a{
+  margin-top: auto;
+  margin-left: 0.2em;
+  color: var(--white);
+  align-items: center;
+  text-decoration: none;
 }
 
 #add-book-button:hover {

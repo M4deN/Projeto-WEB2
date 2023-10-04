@@ -22,7 +22,20 @@ describe('Página de Descrição', () => {
     cy.get('.container').should('be.visible')
   })
 
-  it('Deve exibir o rodapé corretamente', () => {
-    cy.get('footer').should('contain', '© 2023 Projeto Web Ciclo 1. Todos os direitos reservados.')
+  it('Verifica os links do footer', () => {
+    // Verifica se o texto está correto
+    cy.contains('Copyright © 2023 Desenvolvido por Alécio L. Medeiros')
+    // Verifica se o link do Facebook está correto
+    cy.get('footer a[href="https://www.facebook.com/Madenxx/"]').should('have.attr', 'target', '_blank')
+    // Verifica se o link do LinkedIn está correto
+    cy.get('footer a[href="https://www.linkedin.com/in/madenx"]').should('have.attr', 'target', '_blank')
+    // Verifica se o link do GitHub está correto
+    cy.get('footer a[href="https://github.com/M4deN"]').should('have.attr', 'target', '_blank')
+    // Verifica se o link do Instagram está correto
+    cy.get('footer a[href="https://www.instagram.com/madenx/"]').should('have.attr', 'target', '_blank')
+    // Verifica se os ícones de rede social estão presentes
+    cy.get('footer i.fab.fa-linkedin-in').should('exist')
+    cy.get('footer i.fab.fa-github').should('exist')
+    cy.get('footer i.fab.fa-instagram').should('exist')
   })
 })

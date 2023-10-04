@@ -2,7 +2,9 @@
 <html>
 <head>
   <link rel="stylesheet" href="/stylesheets/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">  
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <title>Home</title>
 </head>  
 <body>
@@ -52,8 +54,13 @@
     <% } %>
   </div>
   <footer>
-    <p>© 2023 Projeto Web Ciclo 1. Todos os direitos reservados.</p>
-  </footer>
+    Copyright &copy; 2023 Desenvolvido por
+    <a href="https://www.facebook.com/Madenxx/" target="_blank">Alécio L. Medeiros</a>.
+    <a href="https://www.linkedin.com/in/madenx" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://github.com/M4deN" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/madenx/" target="_blank"><i class="fab fa-instagram"></i></a>        
+</div>
+</footer>
   <% if (typeof message !== 'undefined' && message) { %>
     <script>
       alert('<%= message %>'); 

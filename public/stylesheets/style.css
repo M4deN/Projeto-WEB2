@@ -415,6 +415,8 @@ button[type="button"]{
 }
 /*---------------------------Rodapé----------------------------------*/
 footer{
+  clear: both;
+  border-top: 1px solid #c7c6c6; 
   position: fixed;
   background-color:black;
   bottom: 0;
@@ -422,9 +424,12 @@ footer{
   padding: 5px;
   text-align: center;
 }
-footer p {
+footer p, a{
   margin-top: auto;
-  color: lime;
+  margin-left: 0.2em;
+  color: var(--white);
+  align-items: center;
+  text-decoration: none;
 }
 .nome-usuario {
   margin: 10px;
@@ -435,4 +440,27 @@ footer p {
   margin-left: 81%;
   right: 2%;
   font-size: small;
+}
+
+.dark-mode-toggle {
+  position: fixed;
+  top: 45px;
+  right: 0%;
+  background-color: #161616;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+body.dark-mode .about .content h3 {
+  color: #fff; 
+}
+:root {
+  --h2-text-color-dark: #fff; /
+}
+body.dark-mode h2 {
+  color: var(--h2-text-color-dark);
 }

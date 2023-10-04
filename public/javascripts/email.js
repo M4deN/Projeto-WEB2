@@ -10,7 +10,7 @@ exports.enviarEmail = (req, res) => {
     port: process.env.EMAIL_PORT,
     secure: false,
     auth: {
-      user: process.env.EMAIL_USER,
+      user: process.env.EMAIL_USUARIO,
       pass: process.env.EMAIL_SENHA,
     },
   });

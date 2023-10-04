@@ -4,9 +4,9 @@ describe('Cadastro de Usuário', () => {
   })
 
   it('Cadastrar usuário com sucesso', () => {
-    cy.get('input[name="nome"]').type('Nome do Usuário')
-    cy.get('input[name="email"]').type('usuarioss@example.com')
-    cy.get('input[name="senha"]').type('senha123')
+    cy.get('input[name="nome"]').type('Charlie Bradbury')
+    cy.get('input[name="email"]').type('charlie@outlook.com')
+    cy.get('input[name="senha"]').type('123456')
     cy.get('button[type="submit"]').click()
   })
 
@@ -29,9 +29,9 @@ describe('Cadastro de Usuário', () => {
   it('Mostrar erro ao cadastrar com e-mail já cadastrado', () => {
     // Cadastrar um usuário com e-mail já existente no banco de dados
     cy.request('POST', '/cadastro', {
-      nome: 'Usuário Existente',
-      email: 'usuario@example.com',
-      senha: 'senha123',
+      nome: 'Charlie Bradbury',
+      email: 'charlie@outlook.comcharlie@outlook.com',
+      senha: '123456',
     })
     cy.on('window:alert', (message) => {
       expect(message).to.equal('O e-mail fornecido já está cadastrado')
@@ -44,8 +44,8 @@ describe('Cadastro de Usuário', () => {
       statusCode: 500,
     })
 
-    cy.get('input[name="nome"]').type('Nome do Usuário')
-    cy.get('input[name="email"]').type('usuario@example.com')
+    cy.get('input[name="nome"]').type('Charlie Bradbury')
+    cy.get('input[name="email"]').type('charlie@outlook.com')
     cy.get('input[name="senha"]').type('senha123')
     cy.get('button[type="submit"]').click()
     cy.url().should('include', '/cadastro')
