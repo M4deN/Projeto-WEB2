@@ -11,24 +11,24 @@ Neste ciclo inicial, cada projeto deve atender aos seguintes requisitos e realiz
 - Definir um nome (e um logo) para o sistema.
 - Criar um repositório na plataforma GitHub.
 - Definir um template e padrão visual para o site, incluindo cabeçalho e rodapé.
-- Criar um arquivo para conter as configurações da aplicação web, como senhas e parâmetros necessários para o seu funcionamento (pesquisar sobre dotenv).
-- Criar uma página inicial para o site com um breve resumo da proposta e os links para as demais páginas. A página inicial também deve conter um formulário de login, que ainda não precisa funcionar.
+- Criar um arquivo para conter as configurações da aplicação web, como senhas e parâmetros necessários para o seu funcionamento (Dotenv).
+- Criar uma página inicial para o site com um breve resumo da proposta e os links para as demais páginas. A página inicial também deve conter um formulário de login.
 - Criar uma página com uma descrição detalhada do que será desenvolvido.
 - Criar uma página para listar as tecnologias e ferramentas que serão utilizadas. Todas as bibliotecas utilizadas devem ser listadas nesta página.
 - Criar uma página para descrever o desenvolvedor do projeto e outras pessoas relacionadas a ele.
-- Criar uma página de contato, onde os usuários poderão enviar mensagens por email para os desenvolvedores da ferramenta. Os campos obrigatórios são nome, e-mail, assunto e mensagem (pesquisar sobre como enviar emails).
+- Criar uma página de contato, onde os usuários poderão enviar mensagens por email para os desenvolvedores da ferramenta. Os campos obrigatórios são nome, e-mail, assunto e mensagem (Nodemailer).
 
 Para o desenvolvimento deste ciclo, é obrigatório utilizar o framework Express.js. Os demais pacotes e recursos utilizados são de livre escolha de cada desenvolvedor. Neste ciclo, não é necessário criar uma API para separação entre back-end e front-end. O conteúdo e os dados devem ser disponibilizados em um único servidor. No entanto, é permitido o uso de um framework front-end como React, Vue ou Angular, desde que estejam integrados em um único projeto.
 
-### Ciclo 2 - Sistema Completo integrado com Banco
+### Ciclo 2 - Sistema Completo integrado com Banco De Dados
 
-Nesta segunda etapa do projeto, o objetivo é criar um sistema dinâmico integrado com um banco de dados (relacional ou NoSQL) por meio de uma API web (back-end) e um cliente web (front-end) que consumirá a API desenvolvida.
+Nesta segunda etapa do projeto, o objetivo é criar um sistema dinâmico integrado com um banco de dados (relacional ou NoSQL) por meio de uma API Web (back-end) e um cliente web (front-end) que consumirá a API desenvolvida.
 
 Como requisito principal, o sistema deve permitir pelo menos 3 tipos de cadastros (operações de CRUD completas) que apresentem um relacionamento de um-para-muitos ou muitos-para-muitos, de acordo com a escolha de cada aluno. Um desses cadastros deve ser relacionado ao usuário. O front-end da aplicação deve consumir a API desenvolvida, realizar a validação dos dados fornecidos pelo usuário, além de tratar os erros e mensagens geradas pela API.
 
 A API também deve realizar a validação dos campos, considerando que os dados podem vir de uma fonte diferente do cliente desenvolvido. Mensagens de erro e sucesso devem ser enviadas juntamente com as respostas. Os métodos HTTP GET, POST, PUT e DELETE devem ser utilizados de acordo com a operação a ser executada. O banco de dados pode ser relacional (ex. MySQL ou PostgreSQL) ou NoSQL (ex. MongoDB).
 
-Em resumo, os seguintes recursos foram desenvolvidos:
+Os Seguintes recursos foram desenvolvidos:
 
 - Implementação de uma API REST.
 - Consumo assíncrono dos dados da API pelo cliente.
@@ -67,9 +67,8 @@ O projeto consiste em uma aplicação web para gerenciamento de livros, com as s
 
 Certifique-se de ter as seguintes ferramentas instaladas em seu sistema:
 
-- Node.js (versão 14 ou superior)
+- Node.js (versão 18 ou superior)
 - MongoDB (instância local ou remota)
-- Navegador web compatível
 
 ## Instalação
 
@@ -112,15 +111,15 @@ Siga as etapas abaixo para executar a aplicação em seu ambiente local:
 O arquivo `.env` é usado para armazenar informações sensíveis e variáveis de ambiente do projeto. Antes de executar o projeto, você precisará criar esse arquivo e configurar as seguintes variáveis de ambiente:
 
 ```
-EMAIL_HOST=smtp.office365.com
-EMAIL_PORT=587
+EMAIL_HOST=smtp.office366.com
+EMAIL_PORT=111
 EMAIL_USER=email@outlook.com
 EMAIL_SENHA=mypassword
 EMAIL_DESTINO=email2@outlook.com
 PORT=3000
-MONGODB_URL=mongodb://127.0.0.1:27017/Livraria
+MONGODB_URL=mongodb://127.0.0.1:28018/Livraria
 USERNAME=email@outlook.com
-PASSWORD=password
+PASSWORD=mypassword
 ```
 
 Certifique-se de inserir os valores fictícios acima pelos dados reais correspondentes.
@@ -181,16 +180,9 @@ Este projeto utiliza GitHub Actions para integração contínua. A configuraçã
 
 - **Execução de Testes**: Os testes automatizados são executados para garantir a integridade do código.
 
-- **Implantação Automática (se aplicável)**: Dependendo da configuração, a aplicação pode ser implantada automaticamente após uma confirmação bem-sucedida.
-
-A CI é acionada automaticamente a cada push na branch principal (main). Certifique-se de que todas as alterações são testadas localmente antes de fazer o push para o repositório remoto.
-
 Para mais detalhes, consulte o [arquivo de configuração da CI](./.github/workflows/ci.yml).
 
 ---
-
-**Observação**: Certifique-se de manter atualizado o arquivo de configuração da CI para refletir quaisquer alterações em seus requisitos de construção e teste.
-
 
 ## Licença
 
