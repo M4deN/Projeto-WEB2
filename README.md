@@ -110,19 +110,7 @@ Siga as etapas abaixo para executar a aplicação em seu ambiente local:
 
 O arquivo `.env` é usado para armazenar informações sensíveis e variáveis de ambiente do projeto. Antes de executar o projeto, você precisará criar esse arquivo e configurar as seguintes variáveis de ambiente:
 
-```
-EMAIL_HOST=smtp.office366.com
-EMAIL_PORT=111
-EMAIL_USER=email@outlook.com
-EMAIL_SENHA=mypassword
-EMAIL_DESTINO=email2@outlook.com
-PORT=3000
-MONGODB_URL=mongodb://127.0.0.1:28018/Livraria
-USERNAME=email@outlook.com
-PASSWORD=mypassword
-```
-
-Certifique-se de inserir os valores fictícios acima pelos dados reais correspondentes.
+Certifique-se de substituir os valores fictícios pelos dados reais correspondentes.
 
 - `EMAIL_HOST`: O endereço do servidor de email a ser usado para envio de emails.
 - `EMAIL_PORT`: A porta do servidor de email.
