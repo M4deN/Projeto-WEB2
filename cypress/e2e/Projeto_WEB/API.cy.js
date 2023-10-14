@@ -14,10 +14,10 @@ describe('Testes da API', () => {
 
   it('Deve adicionar um novo livro', () => {
     cy.request('POST', '/livros', {
-      titulo: 'Novo Livro',
+      titulo: 'Liverpool FC The Best',
       anoPublicacao: 2023,
-      autor: 'Autor do Novo Livro',
-      editora: 'Editora do Novo Livro'
+      autor: 'Steven Gerrard',
+      editora: 'Anfield Edition'
     }).then((response) => {
       expect(response.status).to.equal(200)
     })
@@ -75,10 +75,10 @@ describe('Testes da API', () => {
             'Content-Type': 'application/json'
           },
           body: {
-            titulo: 'Livro AtualizadoSSS',
+            titulo: 'This Is Anfield',
             anoPublicacao: 2022,
-            autor: 'Autor AtualizadoSS',
-            editora: 'Editora AtualizadaSS'
+            autor: 'Ian Rush',
+            editora: 'Editora Atualizada'
           }
         }).then(() => {
           expect(200).to.equal(200)
@@ -102,10 +102,10 @@ describe('Testes da API', () => {
           'Authorization': `Bearer ${token}`,
         },
         body: {
-          titulo: 'Novo Livro',
+          titulo: 'Liverpool FC The Best',
           anoPublicacao: 2023,
-          autor: 'Autor do Livro',
-          editora: 'Editora do Livro',
+          autor: 'Steven Gerrard',
+          editora: 'Anfield Edition',
         },
       }).then((postResponse) => {
         const livroId = postResponse.body._id
@@ -142,10 +142,10 @@ describe('Testes da API', () => {
 
   it('Deve adicionar um novo livro', () => {
     cy.request('POST', '/livros', {
-      titulo: 'Novo Livro',
+      titulo: 'Liverpool FC The Best',
       anoPublicacao: 2023,
-      autor: 'Autor do Novo Livro',
-      editora: 'Editora do Novo Livro'
+      autor: 'Steven Gerrard',
+      editora: 'Anfield Edition'
     }).then((response) => {
       expect(response.status).to.equal(200)
     })
@@ -170,10 +170,10 @@ describe('Testes da API', () => {
           'Content-Type': 'application/json'
         },
         body: {
-          titulo: 'Novo Livro',
+          titulo: 'Liverpool FC The Best',
           anoPublicacao: 2023,
-          autor: 'Autor do Livro',
-          editora: 'Editora do Livro'
+          autor: 'Steven Gerrard',
+          editora: 'Anfield Edition'
         }
       }).then((postResponse) => {
         const livroId = postResponse.body._id
@@ -206,10 +206,10 @@ describe('Testes da API', () => {
           'Authorization': `Bearer ${token}`,
         },
         body: {
-          titulo: 'Novo Livro',
+          titulo: 'Liverpool FC The Best',
           anoPublicacao: 2023,
-          autor: 'Autor do Livro',
-          editora: 'Editora do Livro',
+          autor: 'Steven Gerrard',
+          editora: 'Anfield Edition',
         },
       }).then((postResponse) => {
         const livroId = postResponse.body._id
@@ -229,9 +229,9 @@ describe('Testes da API', () => {
 
   it('Deve adicionar um novo autor', () => {
     cy.request('POST', '/livros', {
-      nome: 'Novo Autor',
-      nacionalidade: 'Brasileiro',
-      anoNascimento: 1980
+      nome: 'Ian Rush',
+      nacionalidade: 'Britanico',
+      anoNascimento: 1973
     }).then((response) => {
       expect(response.status).to.equal(200)
     })
