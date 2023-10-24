@@ -134,15 +134,9 @@ Para executar os testes automatizados, certifique-se de que a aplicação esteja
 npm run cy:open
 ```
 
-Isso abrirá a interface do Cypress, onde você poderá selecionar e executar os testes desejados.
+Isso abrirá a interface do Cypress, onde você poderá selecionar e executar os testes desejados ao todo existem 7 arquivos de testes somando um total de 35 testes automatizados.
 
 https://github.com/M4deN/Projeto-WEB2/assets/43422425/11b426af-0b6d-46a2-a721-76b91668e7d8
-
-https://github.com/M4deN/Projeto-WEB2/assets/43422425/d693e235-df09-48ea-a7bc-7f2ea9443276
-
-https://github.com/M4deN/Projeto-WEB2/assets/43422425/3ab5c5fa-1499-4eac-a20d-f91783cc27b9
-
-https://github.com/M4deN/Projeto-WEB2/assets/43422425/9718a10f-46fe-4d3c-ba4f-00a39806ffd7
 
 ## Estrutura de Arquivos
 
@@ -168,10 +162,10 @@ Este projeto utiliza GitHub Actions para integração contínua. A configuraçã
 
 - **Execução de Testes**: Os testes automatizados são executados para garantir a integridade do código.
 
-Para mais detalhes, consulte o [arquivo de configuração da CI](./.github/workflows/ci.yml).
+Para mais detalhes, consulte o [Arquivo CI](./.github/workflows/ci.yml).
 
 ---
 
 ## Licença
 
-Este projeto está licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](./LICENSE) para obter mais informações.
+Este projeto está licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](./LICENSE).
