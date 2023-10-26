@@ -1,6 +1,6 @@
 # Projeto Web
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/M4deN/Projeto-WEB2/ci.yml?label=Test%20Workflows&logo=GitHub&style=for-the-badge)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/M4deN/Projeto-WEB2/ci.yml?label=Test%20Workflows&logo=Cypress&style=for-the-badge)
 
 Este projeto é parte da disciplina e tem como objetivo permitir que os alunos apliquem os conceitos e temas abordados em aula. O projeto consiste no desenvolvimento de um sistema web, onde o aluno tem a liberdade de escolher o domínio do sistema, desde que atenda aos requisitos definidos. Este repositório contém o código-fonte do projeto web que utiliza as seguintes tecnologias: Node.js, Express.js, MongoDB, EJS, entre outras.
 
